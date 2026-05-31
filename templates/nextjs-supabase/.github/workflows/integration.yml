@@ -1,0 +1,68 @@
+name: Integration
+
+# Only runs when database schema, functions, or integration tests change.
+# Path-filtered to avoid burning CI minutes on UI-only or doc-only PRs.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'supabase/migrations/**'
+      - 'supabase/functions/**'
+      - '__tests__/integration/**'
+      - 'vitest.integration.config.ts'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/integration.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'supabase/migrations/**'
+      - 'supabase/functions/**'
+      - '__tests__/integration/**'
+      - 'vitest.integration.config.ts'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/integration.yml'
+
+concurrency:
+  group: integration-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  integration:
+    name: Integration tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '{{NODE_VERSION}}'
+          cache: 'npm'
+
+      - uses: supabase/setup-cli@v1
+        with:
+          version: '{{SUPABASE_CLI_VERSION}}'
+
+      - run: npm ci
+
+      - name: Boot local Supabase
+        run: supabase start || (supabase stop --no-backup; supabase start)
+
+      - name: Write .env.local from supabase status
+        run: |
+          set -e
+          eval "$(supabase status -o env)"
+          cat > .env.local <<EOF
+          NEXT_PUBLIC_SUPABASE_URL=$API_URL
+          NEXT_PUBLIC_SUPABASE_ANON_KEY=$ANON_KEY
+          SUPABASE_SERVICE_ROLE_KEY=$SERVICE_ROLE_KEY
+          EOF
+
+      - run: npm run test:integration
+
+      - name: Stop local Supabase
+        if: always()
+        run: supabase stop --no-backup || true
