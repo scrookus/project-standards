@@ -17,7 +17,7 @@ Installs a set of Claude Code slash commands and project templates that wire up 
 ## Install
 
 ```bash
-git clone git@github.com:crookworld/project-standards.git ~/Documents/GitHub/project-standards
+git clone git@github.com:scrookus/project-standards.git ~/Documents/GitHub/project-standards
 cd ~/Documents/GitHub/project-standards
 chmod +x install.sh
 ./install.sh
