@@ -3,11 +3,36 @@ import { createClient } from '@supabase/supabase-js'
 import { mkdirSync } from 'fs'
 import { AUTH_DIR, BASE_URL, E2E_EMAIL, E2E_PASSWORD } from './constants'
 
-function adminClient() {
+// Env-var name compatibility:
+// Supabase has rolled out renamed local keys
+// (NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY / SUPABASE_SECRET_KEY) alongside
+// the older names (NEXT_PUBLIC_SUPABASE_ANON_KEY / SUPABASE_SERVICE_ROLE_KEY).
+// Read the new names first and fall back to the legacy names so a project
+// can rename on its own schedule without forking this setup.
+function requireLocalE2eEnv() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL
-  const key = process.env.SUPABASE_SERVICE_ROLE_KEY
-  if (!url || !key) throw new Error('e2e setup: NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY must be set')
-  return createClient(url, key, { auth: { autoRefreshToken: false, persistSession: false } })
+  const publishable = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
+    ?? process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  const secret = process.env.SUPABASE_SECRET_KEY
+    ?? process.env.SUPABASE_SERVICE_ROLE_KEY
+
+  const missing = [
+    !url && 'NEXT_PUBLIC_SUPABASE_URL',
+    !publishable && 'NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY (or legacy NEXT_PUBLIC_SUPABASE_ANON_KEY)',
+    !secret && 'SUPABASE_SECRET_KEY (or legacy SUPABASE_SERVICE_ROLE_KEY)',
+  ].filter(Boolean)
+
+  if (missing.length > 0) {
+    throw new Error(
+      `e2e setup requires local Supabase env in .env.local. Missing: ${missing.join(', ')}. Copy local values from "supabase status -o env".`
+    )
+  }
+  return { url: url!, secret: secret! }
+}
+
+function adminClient() {
+  const { url, secret } = requireLocalE2eEnv()
+  return createClient(url, secret, { auth: { autoRefreshToken: false, persistSession: false } })
 }
 
 export default async function globalSetup() {
@@ -57,3 +82,21 @@ export default async function globalSetup() {
 
   console.log('[e2e:setup] done — test data seeded, session saved')
 }
+
+// ── Growing past the single-user template ─────────────────────────────────
+// When the app needs multiple test personas, MFA enrollment, or per-persona
+// storage state, the typical evolution is:
+//   1. Replace E2E_EMAIL/E2E_PASSWORD with a fixtures file (e.g.
+//      `e2e/fixtures/personas.json`) keyed by persona name.
+//   2. Drive the persona selection from an `E2E_PERSONA` env var with a
+//      sensible default; write storage state per persona under
+//      `${AUTH_DIR}/${personaKey}.json`.
+//   3. If the app gates login on MFA, walk the enrollment flow once during
+//      setup (TOTP secret read from the "enter key manually" disclosure;
+//      compute the 6-digit code via base32-decode + HMAC-SHA1).
+//   4. Document a `npm run db:reset:local` recovery path for stale local
+//      auth factors — MFA enrollment is the most fragile step.
+// See `take-me-to-church` (PLT-010) for a reference implementation. The
+// template stays single-persona by default because the MFA enrollment
+// selectors are necessarily app-shaped.
+// ──────────────────────────────────────────────────────────────────────────
