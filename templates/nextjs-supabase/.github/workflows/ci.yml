@@ -1,33 +1,84 @@
+# CI pipeline for {{PROJECT_NAME}}
+#
+# Trigger: pull requests targeting main, pushes to main, and manual dispatch.
+#
+# Job:
+#   quality-gate — Gitleaks, ESLint, TypeScript, Vitest unit suite, Next.js build.
+#
+# Integration and e2e tests are excluded from CI by default — they require a
+# live local Supabase stack. Promote them to CI when a CI Supabase instance
+# is provisioned (see the integration.yml / e2e.yml workflows in this template).
+#
+# Supply-chain controls:
+#   - All `uses:` references are pinned to commit SHA, not tag.
+#   - `npm ci` enforces the committed lockfile.
+#   - Gitleaks is downloaded directly (no third-party action) to avoid the
+#     gitleaks-action private-repo license requirement and limit third-party
+#     action surface.
+#   - Checks live in one job to avoid repeated dependency installs and to
+#     keep runtime budget-aware.
+
 name: CI
 
 on:
-  push:
-    branches: [main]
-    paths-ignore:
-      - 'docs/**'
-      - '**.md'
   pull_request:
-    branches: [main]
-    paths-ignore:
-      - 'docs/**'
-      - '**.md'
+    branches: ['main']
+  push:
+    branches: ['main']
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 concurrency:
-  group: ci-${{ github.ref }}
+  group: ci-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  unit:
-    name: Typecheck, lint, unit tests, build
+  quality-gate:
+    name: Quality gate
     runs-on: ubuntu-latest
+    timeout-minutes: 12
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Checkout (full history)
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683  # actions/checkout v4.2.2
+        with:
+          fetch-depth: 0  # full history required for gitleaks scan
+
+      - name: Set up Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020  # actions/setup-node v4.4.0
         with:
           node-version: '{{NODE_VERSION}}'
           cache: 'npm'
-      - run: npm ci
-      - run: npm run typecheck
-      - run: npm run lint
-      - run: npm run test:unit
-      - run: npm run build
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install gitleaks
+        run: |
+          GITLEAKS_VERSION="8.30.1"
+          curl -sSfL "https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz" \
+            -o gitleaks.tar.gz
+          echo "551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb  gitleaks.tar.gz" | sha256sum -c -
+          tar -xzf gitleaks.tar.gz gitleaks
+          chmod +x gitleaks
+          sudo mv gitleaks /usr/local/bin/gitleaks
+
+      - name: Run gitleaks
+        run: gitleaks detect --source . --config .gitleaks.toml --redact
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Type-check
+        run: npm run typecheck
+
+      - name: Run unit tests
+        run: npm run test:unit
+
+      - name: Build
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+          NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ci-placeholder-publishable-key
+          SUPABASE_SECRET_KEY: ci-placeholder-secret-key
+        run: npm run build

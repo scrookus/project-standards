@@ -1,22 +1,74 @@
 #!/usr/bin/env node
-// Checks if local Supabase is running before running integration tests.
-// Exits 0 (non-blocking) if Supabase is down — advisory only.
+// scripts/run-integration-if-supabase-up.js
+//
+// Checks if the local Supabase stack is running by probing a TCP connection
+// to the REST API port. If reachable: runs `npm run test:integration` and
+// exits with its exit code. If not reachable: prints an advisory message
+// and exits 0 (non-blocking).
+//
+// Invoked by `npm run test:integration:ifup`, part of `npm run ci:local`.
+//
+// Why TCP socket and not fetch: a raw socket probe is faster than HTTP,
+// doesn't care about response shape, and doesn't require AbortSignal.timeout
+// polyfills on older Node.
 
-import { execSync } from 'child_process'
+const { execSync } = require('child_process')
+const { existsSync, readFileSync } = require('fs')
+const { createConnection } = require('net')
 
-let up = false
-try {
-  const r = await fetch('http://localhost:54321/rest/v1/', { signal: AbortSignal.timeout(1000) })
-  up = r.status < 500
-} catch { up = false }
-
-if (!up) {
-  console.log('[ci:local] Supabase not running — integration tests skipped (advisory)')
-  process.exit(0)
+function envFromLocalFile(key) {
+  if (!existsSync('.env.local')) return undefined
+  const line = readFileSync('.env.local', 'utf8')
+    .split(/\r?\n/)
+    .find((entry) => entry.startsWith(`${key}=`))
+  if (!line) return undefined
+  return line.slice(key.length + 1).trim().replace(/^['"]|['"]$/g, '')
 }
 
-console.log('[ci:local] Supabase running — executing integration tests')
-try {
-  execSync('npm run test:integration', { stdio: 'inherit' })
-  process.exit(0)
-} catch (err) { process.exit(err.status ?? 1) }
+const supabaseUrl =
+  process.env.NEXT_PUBLIC_SUPABASE_URL ??
+  envFromLocalFile('NEXT_PUBLIC_SUPABASE_URL') ??
+  'http://localhost:54321'
+
+function canConnect(urlString) {
+  return new Promise((resolve) => {
+    let url
+    try {
+      url = new URL(urlString)
+    } catch {
+      resolve(false)
+      return
+    }
+
+    const socket = createConnection({
+      host: url.hostname,
+      port: Number(url.port || (url.protocol === 'https:' ? 443 : 80)),
+    })
+
+    const finish = (result) => {
+      socket.removeAllListeners()
+      socket.destroy()
+      resolve(result)
+    }
+
+    socket.setTimeout(1000)
+    socket.once('connect', () => finish(true))
+    socket.once('timeout', () => finish(false))
+    socket.once('error', () => finish(false))
+  })
+}
+
+;(async () => {
+  const up = await canConnect(supabaseUrl)
+  if (!up) {
+    console.log(`[ci:local] Supabase not reachable at ${supabaseUrl} — integration tests skipped (advisory)`)
+    process.exit(0)
+  }
+  console.log(`[ci:local] Supabase reachable at ${supabaseUrl} — executing integration tests`)
+  try {
+    execSync('npm run test:integration', { stdio: 'inherit' })
+    process.exit(0)
+  } catch (err) {
+    process.exit(err.status ?? 1)
+  }
+})()

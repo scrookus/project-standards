@@ -56,6 +56,7 @@ scripts/run-e2e-if-supabase-up.js             → scripts/run-e2e-if-supabase-up
 .github/workflows/ci.yml                      → .github/workflows/ci.yml
 .github/workflows/integration.yml            → .github/workflows/integration.yml
 .github/workflows/e2e.yml                    → .github/workflows/e2e.yml
+.gitleaks.toml                                → .gitleaks.toml
 AGENTS.md                                     → AGENTS.md
 CLAUDE.md                                     → CLAUDE.md
 ```

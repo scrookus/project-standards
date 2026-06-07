@@ -1,0 +1,44 @@
+# Gitleaks configuration for {{PROJECT_NAME}}
+# See: https://github.com/gitleaks/gitleaks#configuration
+#
+# This file allowlists known non-secret values that would otherwise
+# trigger false-positive findings.
+#
+# To run locally before committing:
+#   gitleaks detect --source . --config .gitleaks.toml --redact
+#
+# To scan only staged changes (recommended as a pre-commit check):
+#   gitleaks protect --staged --config .gitleaks.toml --redact
+#
+# Install gitleaks: brew install gitleaks  (macOS)
+#   or download from https://github.com/gitleaks/gitleaks/releases
+
+title = "gitleaks — {{PROJECT_NAME}}"
+
+[extend]
+# Use gitleaks default ruleset as the base
+useDefault = true
+
+[[allowlists]]
+description = "Placeholder values in .env.local.example"
+paths = [
+  '''.env\.local\.example''',
+]
+# An example env file contains only placeholders (your-local-anon-key, etc.)
+# and the deterministic local Supabase URL. These are not real secrets.
+
+[[allowlists]]
+description = "Test fixture values and mock credentials in __tests__"
+paths = [
+  '''__tests__/.*''',
+]
+# Test files may contain hardcoded UUIDs, mock JWT-shaped strings, and
+# other fixture data that resembles secrets. These are not real credentials.
+
+[[allowlists]]
+description = "Documentation files"
+paths = [
+  '''docs/.*''',
+]
+# Docs may contain redacted examples, placeholder URLs, and illustrative
+# key-shaped strings. No real secrets belong in docs.
