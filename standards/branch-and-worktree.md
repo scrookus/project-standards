@@ -1,0 +1,92 @@
+# Branch And Worktree Standard
+
+Version: standards-v0.2
+Status: baseline
+Owner: PLT
+Review: DOC primary for format; PLT for workflow safety; SEC for emergency/security carve-outs
+
+## Requirement
+
+Every active or production-support repo must define when to use the current working tree, when to create a separate worktree, when a PR is required, and when direct-to-main is allowed.
+
+The goal is to prevent branch hijacks: one agent switching branches or rewriting state while another agent is working in the same repo path.
+
+## Core Rules
+
+- One active agent task owns one working directory at a time.
+- Parallel agents in the same repo use separate branches and separate worktrees.
+- Branches isolate history; worktrees isolate files. A different branch in the same checkout is not enough isolation for parallel implementation work.
+- Do not switch branches in a shared working directory while another agent may be using it.
+- Do not run `git switch`, `git checkout`, `git pull`, `git rebase`, `git merge`, or stash operations in a dirty tree until you understand the changes and who owns them.
+- If uncommitted changes are present and you did not make them, assume they belong to another human or agent.
+- Do not stack unrelated implementation work in one checkout.
+- PRs are the normal closure event for implementation, infrastructure, security, CI, dependency, release, and maintained-doc changes.
+
+## When Current Worktree Is Acceptable
+
+Use the existing repo path only when all are true:
+
+- You are the only active agent for that repo path.
+- `git status` is clean or every dirty file is yours.
+- The task is short-lived and does not require switching away from the current branch.
+- No local server, database, generated output, or deploy workflow is being shared with another active task.
+
+## When A Separate Worktree Is Required
+
+Create or use a separate worktree when any are true:
+
+- More than one agent may work in the repo at the same time.
+- The task requires switching branches from a shared path.
+- Review and fix work will happen concurrently.
+- The task is long-running or has its own PR.
+- The task touches CI, deploy, migrations, generated artifacts, package upgrades, or other high-blast-radius surfaces.
+- The user asks agents to work in parallel.
+
+Recommended shape:
+
+```sh
+git worktree add ../<repo>-<role>-<task> -b <role>/<task>
+```
+
+Use project-local branch prefixes when defined.
+
+After creating a worktree, run any project-local setup required for agent context, hooks, local settings, or environment files. Each product must document those steps if missing them would cause agents to miss local rules or shared-state locks.
+
+## PR Requirement
+
+PR required by default for:
+
+- Product code.
+- Infrastructure, deploy, CI, hooks, and local gates.
+- Security, auth, secrets, dependency, disclosure, or public trust-boundary docs.
+- Release/deploy docs.
+- Maintained standards, agent contracts, review routing, and task queue format.
+- Multi-file documentation changes that affect operating behavior.
+
+Review routes by touched surface before merge.
+
+## Direct-To-Main Carve-Outs
+
+Direct-to-main is allowed only when explicitly documented by the product and one of these applies:
+
+- Bootstrap mode before product code exists.
+- Trivial doc-only typo or broken-link fix that changes no operating rule, release guidance, security language, or canonical metadata.
+- Emergency production repair with explicit owner approval, recorded reason, post-change verification, and a follow-up task or PR within 24 hours.
+
+Direct-to-main is not allowed for code, CI, dependencies, deploy, security, release, agent-contract, review-routing, or task-queue ownership changes in active or production-support repos.
+
+When a product allows direct-to-main outside trivial doc-only work, the commit body must include a carve-out tag:
+
+```text
+[carve-out: <category>]
+```
+
+Each product must define its allowed carve-out categories and verification rules locally.
+
+## PR Closure
+
+When work corresponds to a queued task, the PR body should name the task ID with `Closes <ID>` or the product's local equivalent. After the PR merges, clean up local/remote branches and stale worktrees as part of the same closure pass unless the product has a stronger branch-retention rule.
+
+## Queue And Ownership
+
+Active branch/worktree coordination belongs in the CTO-owned task queue or the product's documented coordination surface. DOC may review format and clarity; CTO owns active priority and queue state. Products may make CTO the single writer to the active queue when concurrent writes have caused conflicts.

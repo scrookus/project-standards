@@ -1,8 +1,10 @@
 # project-standards
 
-Personal project bootstrap standards for Stuart Crook.
+Canonical shared standards and project bootstrap templates for Stuart Crook projects.
 
-Installs a set of Claude Code slash commands and project templates that wire up the full testing stack, CI workflows, and agent operating model onto any new project in one command.
+This repo is the shared standards home for PickSix, Connections, and Take Me To Church. Product repos adopt the shared baseline from here, then keep their own stack-specific overlays, exceptions, and live task state locally.
+
+It also installs Claude Code slash commands and project templates that wire up testing, CI workflows, and agent operating models onto new projects.
 
 ---
 
@@ -10,7 +12,9 @@ Installs a set of Claude Code slash commands and project templates that wire up 
 
 - [Claude Code](https://claude.ai/code) installed
 - Node.js 20+
-- For integration and e2e tests: [Supabase CLI](https://supabase.com/docs/guides/cli)
+- For current Supabase template integration and e2e tests: [Supabase CLI](https://supabase.com/docs/guides/cli)
+
+The shared standards baseline itself has no stack tooling prerequisite.
 
 ---
 
@@ -38,6 +42,53 @@ git pull
 ---
 
 ## What you get
+
+### Shared standards baseline
+
+Current baseline: `standards-v0.2`
+
+| Standard | File |
+|---|---|
+| Agent contract | `standards/agent-contract.md` |
+| Documentation governance | `standards/documentation-governance.md` |
+| Review routing | `standards/review-routing.md` |
+| Security baseline | `standards/security-baseline.md` |
+| Disclosure response | `standards/disclosure-response.md` |
+| Task queue | `standards/task-queue.md` |
+| Branch and worktree | `standards/branch-and-worktree.md` |
+| Context budget | `standards/context-budget.md` |
+| Cost and subscriptions | `standards/cost-and-subscriptions.md` |
+| Local gates | `standards/local-gates.md` |
+| Dependency risk | `standards/dependency-risk.md` |
+| Release and deploy | `standards/release-and-deploy.md` |
+
+Governance is recorded in `docs/adr/0001-shared-standards-home.md`. Changes are tracked in `CHANGELOG.md`.
+
+This repo adopts the baseline it publishes. Its local adoption record is `docs/ops/standards-adoption.md`; agents should read `AGENTS.md` before changing shared standards or templates.
+
+Acceptance review is recorded in `docs/cross-project-standards/standards-v0.1-acceptance-review.md`.
+
+### Adoption model
+
+Projects use a two-layer model:
+
+1. Shared baseline in `project-standards/standards/`.
+2. Product-local overlays in each repo.
+
+To adopt the baseline:
+
+1. Copy `templates/shared/standards-adoption.md` to the product repo as `docs/ops/standards-adoption.md`.
+2. Record the adopted baseline version, local overlays, deferred standards, known exceptions, and next convergence task.
+3. Update local `AGENTS.md`, review routing, branch/worktree rules, context/read-tier notes, cost/subscription notes, security docs, local gates, dependency-risk policy, and release/deploy docs to point to the shared baseline and preserve stack-specific rules.
+4. Route adoption review through DOC primary, with ARC for architecture language, CTO for cost/subscription posture, PLT for gates and deploy language, and SEC for security, dependency, and disclosure language.
+
+Coverage methodology is an optional product-local overlay. Adopt coverage docs only when they match the repo's actual test stack, paths, thresholds, and domain risks; stale or wrong-project coverage files should be cleaned up separately from standards adoption.
+
+When a product-local methodology decision should apply elsewhere, do not copy the product doc directly. Record it as an upstream candidate, move the reusable principle into `project-standards/`, then open explicit adoption tasks in the affected product queues.
+
+PickSix is the AWS/CDK proof case for this baseline. Its retrofit should preserve AWS CDK, Lambda, DynamoDB, split frontend/backend coordination, deploy-context hazards, and standings backtests as local overlay rules rather than forcing Supabase-shaped assumptions onto the project.
+
+Connections should keep MCP/content, Supabase Edge Function, and release/dogfood rituals local. Take Me To Church should keep launch-gate security, RLS, service-role, AAL, and capability-model work local.
 
 ### Slash command: `/bootstrap`
 
@@ -119,7 +170,9 @@ chmod +x .git/hooks/pre-push
 
 ---
 
-## CI budget
+## CI And Cost Budget
+
+Templates should stay aligned with the user's actual subscriptions. Do not assume paid GitHub, Supabase, AWS, OpenAI, vendor API, or hosting capacity exists unless the product overlay records that subscription.
 
 The three GitHub Actions workflows are path-filtered to stay within ~3 000 free minutes/month:
 
