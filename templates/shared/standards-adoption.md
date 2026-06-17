@@ -61,6 +61,7 @@ Document local stack rules without promoting them to cross-project requirements.
 - Approval required before new recurring cost: TODO
 - First-read docs and surface-read triggers: TODO
 - Context budget review cadence: TODO
+- Queue writer and dirty-queue handoff rule: TODO
 - Deployment hazards: TODO
 - Auth and authorization model: TODO
 - Data access boundaries: TODO

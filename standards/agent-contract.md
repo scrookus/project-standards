@@ -22,6 +22,7 @@ Each contract must state:
 
 - What the project is and who it serves.
 - Current mode: bootstrap, active development, production support, or maintenance.
+- The agent's operating role for the session, especially when acting as CTO or another queue-owning role.
 - Where shared standards are adopted from and which baseline version is current.
 - Where local overlays live.
 - Which docs are first-read versus surface-read or reference-only.
@@ -54,6 +55,12 @@ Projects may use a subset, but the shared vocabulary is:
 ## Independence Rule
 
 Reviewers stay independent by default. The person or agent that implemented a change should not be the only reviewer for the affected lane.
+
+## Role Authority
+
+Agents must not infer queue-writing or approval authority from a branch name, file path, or prior session. If acting as CTO, the session prompt, task queue, or user instruction should say so explicitly.
+
+When role authority is ambiguous, agents may inspect and summarize, but should not mutate CTO-owned queue state, version decisions, deploy approvals, or cost/subscription posture.
 
 ## Local Overlay Examples
 
