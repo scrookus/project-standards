@@ -12,6 +12,7 @@ Changed:
 - Added a proposed repository-controls standard for git config, merge rules, branch protection, required checks, CI ownership, and bypass governance; queued `PSTD-008` to decide whether this becomes a `standards-v0.3` baseline obligation.
 - Marked TMTC `standards-v0.2` adoption handoff complete in the shared standards queue; Connections remains pending.
 - Added a proposed dev-tooling/package-versioning standard for runtime/toolchain pins, package managers, lockfiles, dependency upgrade rules, automation, and package publication; queued `PSTD-009` to decide whether this becomes a `standards-v0.3` baseline obligation.
+- Added read-only cross-project audit prompts for the proposed repository-controls and dev-tooling/package-versioning standards.
 
 ## standards-v0.2 - 2026-06-16
 
