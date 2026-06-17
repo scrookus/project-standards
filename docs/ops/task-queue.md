@@ -3,18 +3,21 @@
 Status: active
 Owner: CTO
 Audience: CTO / DOC / ARC / PLT / SEC / ENG / QAT
-Last reviewed: 2026-06-16
+Last reviewed: 2026-06-17
 
 This is the CTO-owned queue for shared standards and template work. Product repos keep their own active queues; this queue tracks shared baseline changes and cross-product adoption handoffs.
 
 | ID | Owner | Status | Priority | Summary | Next Action | Blocker |
 |---|---|---|---|---|---|---|
 | PSTD-001 | DOC | Active | High | Self-adopt `standards-v0.2` in `project-standards`. | Run self-adoption review and commit/PR the baseline. | None |
-| PSTD-002 | CTO | Pending | High | Track cross-project adoption of `standards-v0.2`. | Drive PSTD-004, PSTD-005, and PSTD-006 to product-queue entries or PRs. | `standards-v0.2` branch must merge first. |
+| PSTD-002 | CTO | Pending | High | Track cross-project adoption of `standards-v0.2`. | PickSix and TMTC have adopted v0.2; drive PSTD-005 for Connections and keep adoption follow-ups visible in product queues. | `standards-v0.2` branch must merge first. |
 | PSTD-003 | CTO | Done | Medium | Triage PickSix upstream standards candidates. | Promoted reusable principles into release/deploy, dependency-risk, and local-gates standards; product-specific syntax stays local. | None |
-| PSTD-004 | CTO | Pending | High | PickSix `standards-v0.2` adoption handoff. | After current PickSix adoption PRs settle, create/identify a PickSix queue item for v0.2 follow-up: context budget, cost/subscription posture, deploy confirmation, allowlist rationale, coverage/test-signal guidance, and SPA cache guidance. | PickSix v0.1 adoption still in progress. |
+| PSTD-004 | CTO | Done | High | PickSix `standards-v0.2` adoption handoff. | PickSix v0.2 follow-up was created/handled by CTO; product-local queue/history owns implementation detail. | None |
 | PSTD-005 | DOC | Pending | High | Connections `standards-v0.2` adoption handoff. | Create/identify a Connections queue item to adopt v0.2 while keeping MCP/content, SET/PUZ/CON, Supabase, and release/dogfood rules local. Focus on context budget and active queue size. | `standards-v0.2` branch must merge first. |
-| PSTD-006 | DOC | Pending | High | TMTC `standards-v0.2` adoption handoff. | Create/identify a TMTC queue item to adopt v0.2 while keeping launch-gate security, RLS, AAL, service-role, and capability-model rules local. | `standards-v0.2` branch must merge first. |
+| PSTD-006 | DOC | Done | High | TMTC `standards-v0.2` adoption handoff. | TMTC adopted v0.2; product-local queue/history owns implementation detail and follow-ups. | None |
+| PSTD-007 | DOC | Done | Medium | Triage reusable PickSix agent-handoff patterns. | Inventory recorded in `docs/cross-project-standards/picksix-agent-handoff-inventory.md`; reusable coverage, migration-safety, data-boundary, and auth-assurance principles were promoted into standards; design-system and observability remain future candidates. | PickSix `PK6-STD-006` should use the inventory to decide keep, replace, archive, or delete per file. |
+| PSTD-008 | PLT | Pending | High | Decide repository-controls baseline for `standards-v0.3`. | Review proposed `standards/repository-controls.md` against PickSix, Connections, and TMTC; decide whether to promote it into the next baseline and open product audit tasks for git config, merge rules, branch protection, and CI settings. | Requires CTO version-bump decision. |
+| PSTD-009 | PLT | Pending | High | Decide dev-tooling/package-versioning baseline for `standards-v0.3`. | Review proposed `standards/dev-tooling-and-package-versioning.md` against PickSix, Connections, and TMTC; decide whether to promote it into the next baseline and open product audit tasks for runtime/toolchain pins, package managers, lockfiles, dependency upgrade rules, and package publication. | Requires CTO version-bump decision. |
 
 ## Queue Rules
 

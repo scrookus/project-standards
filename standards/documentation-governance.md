@@ -45,6 +45,7 @@ ADR files may use their own ADR format if they include status, date, and owner.
 - Move long closure notes, retrospectives, and historical detail out of active queues when they stop guiding current work.
 - Prefer links to product-local overlays over copying shared standards into product docs.
 - Keep first-read agent context concise. Long methodology, examples, and history should live in surface-read or reference docs with clear read triggers.
+- Treat product-local handoff libraries as temporary source material unless they are explicitly maintained as local overlays. Cross-project handoff docs should either become shared standards/templates, remain accurate local docs, or be archived.
 - When a product-local methodology decision may apply across projects, record it as an upstream candidate in the CTO-owned task queue or adoption ledger before copying it elsewhere.
 - Reusable methodology becomes shared only after it is added to `project-standards/`, reviewed by the owning lanes, and adopted back into product overlays through explicit product tasks.
 
@@ -54,9 +55,10 @@ Use this path when a product discovers a methodology that may belong in the shar
 
 1. Keep the first implementation product-local and accurate to that repo.
 2. Add an upstream candidate note naming the source doc, reusable principle, product-specific parts to exclude, owner, and review lanes.
-3. Update `project-standards/` with the reusable principle or template wording.
-4. Open adoption tasks in affected product queues.
-5. Each product either adopts, adapts, or records a deferral/exception in its adoption ledger.
+3. Classify the source material as promote, adapt, local-only, or archive/delete.
+4. Update `project-standards/` with the reusable principle or template wording.
+5. Open adoption tasks in affected product queues.
+6. Each product either adopts, adapts, or records a deferral/exception in its adoption ledger.
 
 ## Review
 

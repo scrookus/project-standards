@@ -62,6 +62,11 @@ Current baseline: `standards-v0.2`
 | Dependency risk | `standards/dependency-risk.md` |
 | Release and deploy | `standards/release-and-deploy.md` |
 
+Proposed next-baseline standards are not adopted obligations until the CTO approves a version bump. Current proposals:
+
+- `standards/repository-controls.md` for git config, merge rules, branch protection, required checks, CI ownership, and bypass governance.
+- `standards/dev-tooling-and-package-versioning.md` for runtime/toolchain pins, package managers, lockfiles, dependency upgrade rules, Dependabot posture, and package publication.
+
 Governance is recorded in `docs/adr/0001-shared-standards-home.md`. Changes are tracked in `CHANGELOG.md`.
 
 This repo adopts the baseline it publishes. Its local adoption record is `docs/ops/standards-adoption.md`; agents should read `AGENTS.md` before changing shared standards or templates.

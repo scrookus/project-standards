@@ -3,7 +3,7 @@
 Status: active
 Owner: DOC
 Audience: CTO / DOC / ARC / PLT / SEC / ENG
-Last reviewed: 2026-06-16
+Last reviewed: 2026-06-17
 
 ## Adopted Baseline
 
@@ -37,16 +37,9 @@ Shared standards source: `standards/`
 
 ## Upstream Candidates
 
-Use this section for methodology decisions discovered in product repos that may belong in `project-standards/`.
+Cross-project upstream candidates live in `docs/cross-project-standards/upstream-candidate-register.md`.
 
-| Source Doc | Reusable Principle | Product-Specific Parts To Exclude | Owner | Status |
-|---|---|---|---|---|
-| PickSix `docs/testing/coverage-methodology.md` | Coverage thresholds are ratchets; tool-version coverage changes need recalibration notes. | PickSix paths, Vitest-only details, Node-version specifics unless broadly applicable. | QAT / PLT | promoted to `standards/local-gates.md` |
-| PickSix first-session feedback | Promote staging to production only when code changes are in scope. | PickSix branch names and Amplify topology. | PLT / CTO | promoted to `standards/release-and-deploy.md` |
-| PickSix first-session feedback | Always confirm before deploy; describe scope, target, and blast radius before waiting for explicit approval. | Product-specific deploy commands and environments. | PLT / SEC | promoted to `standards/release-and-deploy.md` |
-| PickSix `.audit-allowlist.json` | Audit allowlist entries should include advisory ID plus a plain-English reason. | npm-only file names and exact JSON shape unless adopted by an npm project. | SEC / PLT | promoted to `standards/dependency-risk.md` |
-| PickSix frontend test feedback | Boundary tests are insurance for mocked transport, not proof of production signal. | MSW-specific examples unless the adopting repo uses MSW. | QAT / REV | promoted to `standards/local-gates.md` |
-| PickSix frontend cache-header work | SPA cache policy should separate shell, immutable hashed assets, and service-worker revalidation. | Amplify `customHttp.yml` syntax and PickSix domain details. | PLT / SEC | promoted as host-agnostic guidance in `standards/release-and-deploy.md` |
+Keep this adoption ledger focused on how `project-standards/` adopts the current baseline. Use the register for promoted, candidate, deferred, or rejected methodology discovered from product repos.
 
 ## Next Convergence Task
 
