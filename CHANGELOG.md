@@ -1,5 +1,18 @@
 # Changelog
 
+## Unreleased
+
+Changed:
+
+- Added the PickSix agent-handoff inventory and promoted reusable coverage-ratchet, data/migration safety, data-boundary, and privileged-auth assurance principles into existing v0.2 standards.
+- Marked design-system and observability handoff patterns as future standards candidates rather than mandatory v0.2 baseline obligations.
+- Recorded Connections adoption findings as upstream candidates for memory routing, inbox-to-queue separation, carve-out catalogs, task ID counters, and public-safe pointers to private runbooks.
+- Recorded TMTC adoption findings as upstream candidates for keep-and-prefix overlays, product-local role extensions, held-for-trigger queues, migration-safety depth, and agent context containment.
+- Split the upstream candidate register out of the `project-standards` self-adoption ledger and grouped it by promoted, candidate, and deferred/rejected status.
+- Added a proposed repository-controls standard for git config, merge rules, branch protection, required checks, CI ownership, and bypass governance; queued `PSTD-008` to decide whether this becomes a `standards-v0.3` baseline obligation.
+- Marked TMTC `standards-v0.2` adoption handoff complete in the shared standards queue; Connections remains pending.
+- Added a proposed dev-tooling/package-versioning standard for runtime/toolchain pins, package managers, lockfiles, dependency upgrade rules, automation, and package publication; queued `PSTD-009` to decide whether this becomes a `standards-v0.3` baseline obligation.
+
 ## standards-v0.2 - 2026-06-16
 
 Material expansion of the shared baseline after PickSix first adoption feedback.

@@ -32,7 +32,19 @@ Coverage policy is product-local. A repo may document thresholds, ratchets, excl
 
 Do not copy a coverage methodology from another product unchanged. If a coverage doc mentions paths, tools, domains, or workflows that do not exist in the adopting repo, rewrite it, archive it, or track it as stale-doc cleanup instead of treating it as part of standards adoption.
 
-Coverage thresholds should be treated as ratchets. Lowering a threshold requires an explicit owner-approved exception. When a tool or runtime version changes how coverage is measured, record the measurement context and recalibration rationale in the product-local coverage methodology.
+Coverage thresholds should be treated as ratchets. When introducing a threshold, measure the current suite under the repo's CI runtime, set the floor from the measured baseline with jitter buffer, and record the method. Lowering a threshold requires an explicit owner-approved exception. When a tool or runtime version changes how coverage is measured, record the measurement context and recalibration rationale in the product-local coverage methodology.
+
+## Data And Migration Safety Reports
+
+Data model changes, migrations, RPC changes, IAM/policy changes, and schema-affecting deploys need a short safety report before execution or review. The report should state:
+
+- What changes.
+- Real risks and expected false-positive warnings.
+- Rollback or forward-fix path.
+- Required local/remote checks.
+- Approval or review lane.
+
+Stack examples such as Supabase SQL analyzer warnings, AWS IAM policy diffs, DynamoDB table/index changes, or CDK synthesis output stay product-local.
 
 ## Test Signal Guidance
 
