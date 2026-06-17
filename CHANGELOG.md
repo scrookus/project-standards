@@ -12,6 +12,7 @@ Added:
 - Coverage guidance clarifying that coverage methodology is product-local and must match the adopting repo's real stack, paths, thresholds, and risks.
 - Local-to-shared promotion path for methodology decisions that start in one product but may apply across projects.
 - Triaged PickSix first-session upstream candidates into shared release/deploy, dependency-risk, local-gates, and host-agnostic SPA cache guidance.
+- Explicit role-authority and dirty-queue handoff rules for CTO-owned task queues.
 - Self-adoption overlays for `project-standards/`, making the canonical standards repo subject to its own baseline.
 - CTO-owned standards version bump authority.
 

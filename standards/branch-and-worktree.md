@@ -19,6 +19,7 @@ The goal is to prevent branch hijacks: one agent switching branches or rewriting
 - Do not switch branches in a shared working directory while another agent may be using it.
 - Do not run `git switch`, `git checkout`, `git pull`, `git rebase`, `git merge`, or stash operations in a dirty tree until you understand the changes and who owns them.
 - If uncommitted changes are present and you did not make them, assume they belong to another human or agent.
+- If the dirty file is a CTO-owned task queue, treat it as active coordination state. Do not edit, stage, or overwrite it unless explicitly acting as CTO or instructed by the user.
 - Do not stack unrelated implementation work in one checkout.
 - PRs are the normal closure event for implementation, infrastructure, security, CI, dependency, release, and maintained-doc changes.
 
@@ -90,3 +91,5 @@ When work corresponds to a queued task, the PR body should name the task ID with
 ## Queue And Ownership
 
 Active branch/worktree coordination belongs in the CTO-owned task queue or the product's documented coordination surface. DOC may review format and clarity; CTO owns active priority and queue state. Products may make CTO the single writer to the active queue when concurrent writes have caused conflicts.
+
+If the current checkout contains dirty coordination files owned by another role, create a separate worktree for unrelated work or stop for direction.
