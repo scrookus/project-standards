@@ -14,6 +14,7 @@ Changed:
 - Added a proposed dev-tooling/package-versioning standard for runtime/toolchain pins, package managers, lockfiles, dependency upgrade rules, automation, and package publication; queued `PSTD-009` to decide whether this becomes a `standards-v0.3` baseline obligation.
 - Added read-only cross-project audit prompts for the proposed repository-controls and dev-tooling/package-versioning standards.
 - Recorded Connections `/check-comms` and `/wrap` as upstream candidates for possible agent-session-rituals guidance; queued `PSTD-010` to compare them with TMTC and PickSix before promotion.
+- Recorded Connections post-adoption feedback that standards candidates and deferrals need queue-backed triggers, and queued `PSTD-011` to tighten that guidance.
 
 ## standards-v0.2 - 2026-06-16
 
