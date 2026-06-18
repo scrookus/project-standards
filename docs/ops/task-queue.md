@@ -3,7 +3,7 @@
 Status: active
 Owner: CTO
 Audience: CTO / DOC / ARC / PLT / SEC / ENG / QAT
-Last reviewed: 2026-06-17
+Last reviewed: 2026-06-18
 
 This is the CTO-owned queue for shared standards and template work. Product repos keep their own active queues; this queue tracks shared baseline changes and cross-product adoption handoffs.
 
@@ -18,6 +18,7 @@ This is the CTO-owned queue for shared standards and template work. Product repo
 | PSTD-007 | DOC | Done | Medium | Triage reusable PickSix agent-handoff patterns. | Inventory recorded in `docs/cross-project-standards/picksix-agent-handoff-inventory.md`; reusable coverage, migration-safety, data-boundary, and auth-assurance principles were promoted into standards; design-system and observability remain future candidates. | PickSix `PK6-STD-006` should use the inventory to decide keep, replace, archive, or delete per file. |
 | PSTD-008 | PLT | Pending | High | Decide repository-controls baseline for `standards-v0.3`. | Run `docs/cross-project-standards/repository-controls-audit-prompt.md` against PickSix, Connections, and TMTC; then decide whether to promote `standards/repository-controls.md` into the next baseline. | Requires CTO version-bump decision. |
 | PSTD-009 | PLT | Pending | High | Decide dev-tooling/package-versioning baseline for `standards-v0.3`. | Run `docs/cross-project-standards/dev-tooling-package-versioning-audit-prompt.md` against PickSix, Connections, and TMTC; then decide whether to promote `standards/dev-tooling-and-package-versioning.md` into the next baseline. | Requires CTO version-bump decision. |
+| PSTD-010 | DOC | Pending | Medium | Evaluate agent-session-rituals standard or template. | Compare Connections `/check-comms` and `/wrap` with TMTC memory/context containment and PickSix session practices; decide whether to draft shared guidance for session coordination checks and concise wraps. | Wait until Connections v0.2 adoption exposes which rituals remain product-local. |
 
 ## Queue Rules
 

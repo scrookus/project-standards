@@ -3,7 +3,7 @@
 Status: active
 Owner: DOC
 Audience: CTO / DOC / ARC / PLT / SEC / ENG / QAT / UXD
-Last reviewed: 2026-06-17
+Last reviewed: 2026-06-18
 
 ## Purpose
 
@@ -44,6 +44,8 @@ Do not copy product docs wholesale into the shared baseline. Promote reusable pr
 | TMTC standards-v0.2 adoption assessment | Agent context containment can be made explicit by rejecting reliance on shared global agent instructions for product-critical rules. | TMTC ADR numbers, local comms framework, and project-specific memory policy. | DOC / SEC | Evaluate with context-budget standard. |
 | CTO cross-project consistency concern | Repos need a consistent controls record for git config, merge rules, branch protection, required checks, CI workflow ownership, and bypass rules. | Exact GitHub settings, check names, merge methods, and branch names differ per repo. | PLT / SEC / CTO | Drafted as `standards/repository-controls.md`; decide in `PSTD-008`. |
 | CTO cross-project consistency concern | Repos need a consistent tooling/version record for runtimes, package managers, lockfiles, dependency upgrade policy, GitHub Actions, automation, and package publication. | Exact tool versions, package managers, release workflows, and package names differ per repo. | PLT / ENG / SEC / CTO | Drafted as `standards/dev-tooling-and-package-versioning.md`; decide in `PSTD-009`. |
+| Connections `.claude/commands/check-comms.md` | Agents should have a session coordination check that refreshes live queue state, role-relevant inbox/comms, blockers, and cleared dependencies from disk before acting. | Connections memory paths, role names, grep commands, SessionStart hook implementation, and queue section names. | DOC / CTO | Candidate for future agent-session-rituals guidance; compare with TMTC memory/context containment. |
+| Connections `.claude/commands/wrap.md` | Agents should write short session wraps only when durable carry-forward state changed, with a strict line budget and no routine progress noise. | Connections lane directories, exact wrap file names, inbox remediation mechanics, and Claude-specific launcher details. | DOC / CTO | Candidate for future agent-session-rituals guidance; compare with TMTC memory/context containment. |
 
 ## Deferred Or Rejected
 
