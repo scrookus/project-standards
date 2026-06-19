@@ -17,6 +17,7 @@ Changed:
 - Recorded Connections post-adoption feedback that standards candidates and deferrals need queue-backed triggers, and queued `PSTD-011` to tighten that guidance.
 - Added a `standards-v0.3` product adoption prompt covering repository controls, dev tooling/package versioning, and queue-backed deferral triggers.
 - Promoted TMTC ADR 0016's task-queue authority versus mirror principle into the shared task-queue standard without mandating GitHub Issues for every repo.
+- Added session role identity guidance to the agent contract standard, based on Connections' clearer CTO/ENG role startup model.
 
 ## standards-v0.2 - 2026-06-16
 

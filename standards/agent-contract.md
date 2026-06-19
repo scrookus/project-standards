@@ -62,6 +62,18 @@ Agents must not infer queue-writing or approval authority from a branch name, fi
 
 When role authority is ambiguous, agents may inspect and summarize, but should not mutate CTO-owned queue state, version decisions, deploy approvals, or cost/subscription posture.
 
+## Session Role Identity
+
+Products with specialist lanes should provide an explicit session role identity signal, such as a launcher, local wrapper, startup hook, prompt convention, or first-read instruction.
+
+The signal should be visible early in the session and stable enough that the agent can answer:
+
+- Which role am I operating as?
+- Which queue lane, review lane, and memory/context lane apply?
+- Am I allowed to mutate role-owned state, or only inspect and recommend?
+
+If the role is unclear, the agent should stop before mutating role-owned state and ask for direction. Do not rely on branch names, stale memory, or inferred task topic as the only role identity source.
+
 ## Local Overlay Examples
 
 PickSix must keep AWS/CDK deploy hazards local and prominent, including any rule that prevents raw `cdk deploy` from resetting production context or secrets. Connections should keep MCP/content and Supabase Edge Function rituals local. TMTC should keep launch-gate security, RLS, and capability-model work local.
