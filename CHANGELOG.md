@@ -18,6 +18,7 @@ Changed:
 - Added a `standards-v0.3` product adoption prompt covering repository controls, dev tooling/package versioning, and queue-backed deferral triggers.
 - Promoted TMTC ADR 0016's task-queue authority versus mirror principle into the shared task-queue standard without mandating GitHub Issues for every repo.
 - Added session role identity guidance to the agent contract standard, based on Connections' clearer CTO/ENG role startup model.
+- Incorporated Connections `standards-v0.3` adoption feedback: source-backed inventory writing, local role-mapping-aware review routing, fresh-context lane review as a candidate pattern, and canonical Dependabot/Renovate policy ownership in dev-tooling.
 
 ## standards-v0.2 - 2026-06-16
 

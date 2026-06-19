@@ -26,6 +26,9 @@ Do not copy product docs wholesale into the shared baseline. Promote reusable pr
 | PickSix frontend `docs/agent-handoff/data-access-boundary.md` | Data access boundaries must be named and enforceable rather than convention-only. | Supabase client paths, env var names, regex implementation. | ARC / SEC | `standards/security-baseline.md` |
 | PickSix frontend `docs/agent-handoff/mfa.md` | Privileged actions need a session-assurance model, recovery path, and server-side enforcement. | Supabase AAL/RLS syntax, TOTP-specific flow. | SEC / UXD | `standards/security-baseline.md` |
 | TMTC `docs/adr/0016-task-queue-authority-and-storage.md` | Active queue authority should be distinct from generated/read-only queue mirrors when multi-agent worktrees make tracked Markdown queues stale or unsafe. | TMTC incident dates, GitHub label taxonomy, script names, issue templates, and migration phases. | CTO / DOC / PLT | `standards/task-queue.md` |
+| Connections standards-v0.3 adoption feedback | Inventory and enumeration tables should be written while reading current source files, not from memory of an earlier scan. | Connections workflow names, Deno runtime row, and local CI file paths. | DOC / PLT / ENG | `docs/cross-project-standards/standards-v0.3-adoption-prompt.md` |
+| Connections standards-v0.3 adoption feedback | Shared review-routing instructions should allow product-local role mappings when a project absorbs DOC, PLT, or other shared lanes into another role. | Connections role taxonomy and mapping table. | DOC / CTO | `docs/cross-project-standards/standards-v0.3-adoption-prompt.md` |
+| Connections standards-v0.3 adoption feedback | Dependabot/Renovate policy needs one canonical overlay owner to avoid duplicated repository-controls and dev-tooling text. | Connections local cross-links and product-specific automation details. | PLT / SEC / ENG | `standards/dev-tooling-and-package-versioning.md` and `standards/repository-controls.md` |
 
 ## Candidates
 
@@ -50,6 +53,7 @@ Do not copy product docs wholesale into the shared baseline. Promote reusable pr
 | Connections role launchers and SessionStart hook | Specialist sessions should expose an explicit, stable role identity signal early in the session so agents know their queue lane, review lane, memory lane, and mutation authority. | Connections launcher aliases, terminal-title convention, role list, hook code, and private memory paths. | DOC / CTO | Promoted to `standards/agent-contract.md`; implementation remains product-local. |
 | Connections post-adoption feedback | Upstream candidates and deferred standards should have queue-backed triggers, not ledger-only aspirations. | Connections task IDs, local deferred-standard names, and project-specific triggers. | CTO / DOC | Candidate for documentation-governance/task-queue refinement. |
 | Connections post-adoption feedback | When handing facts to a reviewing sub-agent, mark unverified claims as hypotheses and ask the lane to verify against current state. | Connections migration numbers, private memory references, and lane-specific prompt wording. | REV / DOC | Candidate for review-routing or agent-session-rituals guidance. |
+| Connections standards-v0.3 adoption feedback | Fresh-context lane review can catch content-substance gaps in CTO-led docs work that touches another lane's surface. | Connections SEC sub-agent run, token/session details, and local Rule 18 implementation. | REV / DOC / SEC | Candidate for review-routing or agent-session-rituals guidance. |
 
 ## Deferred Or Rejected
 

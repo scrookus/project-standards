@@ -25,7 +25,7 @@ Each product overlay should state:
 - Direct-to-main carve-outs and their required commit or task notation.
 - Branch deletion/retention policy after merge.
 - Local hook installation expectations.
-- Dependabot or dependency-update merge posture.
+- Dependency-update merge and branch-protection posture, with detailed automation policy owned by the dev-tooling/package-versioning overlay.
 - CI workflow names, triggers, path filters, concurrency rules, and cost posture.
 - Secrets and environment ownership for CI and deploy jobs.
 

@@ -66,9 +66,11 @@ Constraints:
 - Do not change actual GitHub settings during this pass.
 - Do not upgrade dependencies or regenerate lockfiles during this pass.
 - Do not invent branch protection facts. If a setting cannot be observed locally, mark it as "needs GitHub verification" and queue it.
+- When writing inventory tables for workflows, runtimes, secrets, branch protections, required checks, package/tool versions, or CI jobs, read the source file during table construction rather than relying on memory from an earlier scan.
+- Mark uncertain facts as "needs verification" instead of presenting them as current state.
 - Keep product-specific details local; do not copy another product's overlay.
 - Keep edits short and enforceable.
-- Route DOC primary, PLT for repo controls/tooling/CI, ENG for build/runtime impact, SEC for branch bypass/secrets/dependency posture, and CTO for version/cost/subscription decisions.
+- Route DOC primary, or the local role that absorbs DOC. Route PLT, or the local platform/tooling owner, for repo controls/tooling/CI; ENG for build/runtime impact; SEC for branch bypass/secrets/dependency posture; and CTO for version/cost/subscription decisions.
 
 Expected output:
 

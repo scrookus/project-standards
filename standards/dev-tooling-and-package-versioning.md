@@ -65,6 +65,8 @@ If the repo uses Dependabot, Renovate, or equivalent automation, the product ove
 - How accepted audit findings are tracked.
 - How noisy or recurring updates are throttled.
 
+This standard owns the canonical dependency-update automation policy: grouping, version posture, auto-merge, human review, accepted audit finding flow, and noise throttling. Repository-controls overlays may reference required checks or branch-protection behavior for dependency-update PRs, but should link here rather than duplicate the policy.
+
 Security updates may be expedited, but should still preserve review visibility and post-merge verification appropriate to the touched surface.
 
 ## Package Publication
