@@ -33,6 +33,8 @@ Each product must classify agent permission settings into these layers:
 
 The user-level baseline is the highest authority for cross-project posture. Project-level policy may add project-specific rules only through the product's documented review path. Worktree-local drift is never canonical.
 
+Tool precedence must be verified locally. Some tools treat local project settings as higher precedence than shared project settings, and some merge permission arrays across scopes instead of replacing them. In that shape, a tracked project file provides reviewability but does not by itself prevent local or user settings from adding rules.
+
 ## User-Level Baseline
 
 The user-level baseline should define permissions that apply to every project, such as:
@@ -76,6 +78,8 @@ Products should prevent local drift from silently weakening the baseline where t
 
 Do not put cross-project permission rules only in a private local file. If every project must follow a rule, put it in the user-level baseline or shared standards and make product overlays point to it.
 
+If the tool supports a managed or enterprise policy that blocks lower-scope permission rules, that is the strongest prevention mechanism. If not, the product must be honest that it has detection and review controls rather than hard prevention.
+
 ## Project-Level Policy
 
 Project overlays must state:
@@ -107,6 +111,7 @@ Before relying on a permission policy, verify the tool's real semantics rather t
 
 At minimum, products should verify:
 
+- The active settings sources and their order of precedence.
 - Rule precedence across deny, ask, allow, unmatched, and inherited settings.
 - Pattern or glob semantics, including whether broad rules override narrow rules.
 - Whether environment-variable prefixes, wrappers, shell compounds, scripts, aliases, or absolute paths change matching behavior.
