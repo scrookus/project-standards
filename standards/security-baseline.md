@@ -1,3 +1,15 @@
+---
+type: Standard
+title: Security Baseline Standard
+description: Baseline security, secrets, auth, and trust-boundary rules.
+resource: standards/security-baseline.md
+tags: [standards, security, baseline]
+timestamp: 2026-06-20T00:00:00-07:00
+standards_version: standards-v0.2
+status: baseline
+owner: SEC
+okf_version: "0.1"
+---
 # Security Baseline Standard
 
 Version: standards-v0.2

@@ -1,3 +1,14 @@
+---
+type: Overlay
+title: project-standards Branch And Worktree Rules
+description: Local branch, worktree, and cleanup rules for standards/template work.
+resource: docs/ops/branch-and-worktree.md
+tags: [ops, git, worktrees]
+timestamp: 2026-06-20T00:00:00-07:00
+status: active
+owner: PLT
+okf_version: "0.1"
+---
 # project-standards Branch And Worktree Rules
 
 Status: active

@@ -1,3 +1,14 @@
+---
+type: TaskQueue
+title: project-standards Task Queue
+description: CTO-owned queue for shared standards and template work.
+resource: docs/ops/task-queue.md
+tags: [ops, task-queue, cto]
+timestamp: 2026-06-20T00:00:00-07:00
+status: active
+owner: CTO
+okf_version: "0.1"
+---
 # project-standards Task Queue
 
 Status: active
@@ -21,6 +32,7 @@ This is the CTO-owned queue for shared standards and template work. Product repo
 | PSTD-010 | DOC | Pending | Medium | Evaluate agent-session-rituals standard or template. | Compare Connections role identity, `/check-comms`, and `/wrap` with TMTC memory/context containment and PickSix session practices; decide whether to draft shared guidance for session startup, coordination checks, and concise wraps. | Wait until Connections v0.2 adoption exposes which rituals remain product-local. |
 | PSTD-011 | DOC | Pending | Medium | Tighten queue-backed triggers and queue authority guidance. | Review `standards/documentation-governance.md`, `standards/task-queue.md`, and `templates/shared/standards-adoption.md`; require upstream candidates and deferred standards to name a queue item, trigger, or review date, and validate task-queue authority/mirror language against TMTC ADR 0016. | Use Connections post-adoption feedback and TMTC ADR 0016 as proof cases. |
 | PSTD-012 | DOC | Pending | High | Prepare `standards-v0.3` product adoption prompt. | Drafted `docs/cross-project-standards/standards-v0.3-adoption-prompt.md`; after CTO promotes v0.3, use it to open adoption tasks in PickSix, Connections, and TMTC. | Requires v0.3 promotion decision. |
+| PSTD-013 | DOC | Pending | Medium | Backfill OKF-compatible metadata beyond shared standards. | Convert priority overlays, templates, cross-project registers, and ADRs after the shared standards adoption proves the profile. | Do not bulk-edit historical docs without review; start with first-read and surface-read docs. |
 
 ## Queue Rules
 

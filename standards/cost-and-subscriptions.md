@@ -1,3 +1,15 @@
+---
+type: Standard
+title: Cost And Subscription Standard
+description: Cost, subscription, quota, and paid-vendor posture for product overlays.
+resource: standards/cost-and-subscriptions.md
+tags: [standards, cost, and, subscriptions]
+timestamp: 2026-06-20T00:00:00-07:00
+standards_version: standards-v0.2
+status: baseline
+owner: CTO
+okf_version: "0.1"
+---
 # Cost And Subscription Standard
 
 Version: standards-v0.2

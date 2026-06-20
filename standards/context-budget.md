@@ -1,3 +1,15 @@
+---
+type: Standard
+title: Context Budget Standard
+description: Context size, read-tier, and startup-load rules for agent work.
+resource: standards/context-budget.md
+tags: [standards, context, budget]
+timestamp: 2026-06-20T00:00:00-07:00
+standards_version: standards-v0.2
+status: baseline
+owner: DOC
+okf_version: "0.1"
+---
 # Context Budget Standard
 
 Version: standards-v0.2

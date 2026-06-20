@@ -1,3 +1,15 @@
+---
+type: Standard
+title: Repository Controls Standard
+description: Repository settings, branch protection, CI ownership, merge, and bypass rules.
+resource: standards/repository-controls.md
+tags: [standards, repository, controls]
+timestamp: 2026-06-20T00:00:00-07:00
+standards_version: proposed-standards-v0.3
+status: proposed
+owner: PLT
+okf_version: "0.1"
+---
 # Repository Controls Standard
 
 Version: proposed-standards-v0.3

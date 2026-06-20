@@ -1,3 +1,15 @@
+---
+type: Standard
+title: Disclosure Response Standard
+description: Security disclosure intake, triage, and response rules.
+resource: standards/disclosure-response.md
+tags: [standards, disclosure, response]
+timestamp: 2026-06-20T00:00:00-07:00
+standards_version: standards-v0.2
+status: baseline
+owner: SEC
+okf_version: "0.1"
+---
 # Disclosure Response Standard
 
 Version: standards-v0.2

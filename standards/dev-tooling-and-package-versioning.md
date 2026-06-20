@@ -1,3 +1,15 @@
+---
+type: Standard
+title: Dev Tooling And Package Versioning Standard
+description: Runtime, package manager, lockfile, automation, and package-versioning rules.
+resource: standards/dev-tooling-and-package-versioning.md
+tags: [standards, dev, tooling, and, package, versioning]
+timestamp: 2026-06-20T00:00:00-07:00
+standards_version: proposed-standards-v0.3
+status: proposed
+owner: PLT
+okf_version: "0.1"
+---
 # Dev Tooling And Package Versioning Standard
 
 Version: proposed-standards-v0.3

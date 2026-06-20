@@ -1,3 +1,14 @@
+---
+type: Overlay
+title: project-standards Cost And Subscriptions
+description: Local cost and subscription posture for standards and templates.
+resource: docs/ops/cost-and-subscriptions.md
+tags: [ops, cost, subscriptions]
+timestamp: 2026-06-20T00:00:00-07:00
+status: active
+owner: CTO
+okf_version: "0.1"
+---
 # project-standards Cost And Subscriptions
 
 Status: active

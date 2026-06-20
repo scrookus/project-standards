@@ -1,3 +1,15 @@
+---
+type: Standard
+title: Review Routing Standard
+description: Review lane routing and reviewer independence rules.
+resource: standards/review-routing.md
+tags: [standards, review, routing]
+timestamp: 2026-06-20T00:00:00-07:00
+standards_version: standards-v0.2
+status: baseline
+owner: DOC
+okf_version: "0.1"
+---
 # Review Routing Standard
 
 Version: standards-v0.2

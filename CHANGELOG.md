@@ -23,6 +23,7 @@ Changed:
 - Clarified worktree-sensitive artifact classes so shared local authority, generated mirrors, and private worktree-local files such as `.claude/settings.local.json` do not get confused.
 - Added worktree closure guidance requiring agents to summarize outcomes, capture reusable lessons, propose follow-ups or standards candidates, and remove stale worktrees unless retention is explicitly owned.
 - Added a preferred worktree layout order: sibling directories first, a documented parent next to a bare repo second, and nested in-repo worktrees only as explicit product exceptions; hidden tool-specific worktrees such as `.claude/worktrees/` are not allowed for new work and must be migrated when encountered.
+- Adopted an OKF-compatible knowledge profile in `project-standards`: shared standards now carry YAML frontmatter, `standards/index.md` supports progressive disclosure, and `PSTD-013` tracks staged backfill beyond the standards directory.
 
 ## standards-v0.2 - 2026-06-16
 

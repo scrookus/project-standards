@@ -1,3 +1,14 @@
+---
+type: ADR
+title: Shared Standards Home
+description: Decision that project-standards is the canonical shared standards home.
+resource: docs/adr/0001-shared-standards-home.md
+tags: [adr, governance, standards]
+timestamp: 2026-06-20T00:00:00-07:00
+status: accepted
+owner: CTO
+okf_version: "0.1"
+---
 # ADR 0001: Shared Standards Home
 
 Status: accepted

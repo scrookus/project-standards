@@ -1,3 +1,15 @@
+---
+type: Standard
+title: Local Gates Standard
+description: Local verification, test, coverage, and pre-merge gate rules.
+resource: standards/local-gates.md
+tags: [standards, local, gates]
+timestamp: 2026-06-20T00:00:00-07:00
+standards_version: standards-v0.2
+status: baseline
+owner: PLT
+okf_version: "0.1"
+---
 # Local Gates Standard
 
 Version: standards-v0.2

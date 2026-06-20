@@ -1,3 +1,15 @@
+---
+type: Standard
+title: Release And Deploy Standard
+description: Release, deploy, environment promotion, and rollback rules.
+resource: standards/release-and-deploy.md
+tags: [standards, release, and, deploy]
+timestamp: 2026-06-20T00:00:00-07:00
+standards_version: standards-v0.2
+status: baseline
+owner: PLT
+okf_version: "0.1"
+---
 # Release And Deploy Standard
 
 Version: standards-v0.2

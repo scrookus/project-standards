@@ -1,3 +1,14 @@
+---
+type: Overlay
+title: project-standards Context Budget
+description: Local read tiers and context-budget checks for standards work.
+resource: docs/ops/context-budget.md
+tags: [ops, context-budget, agents]
+timestamp: 2026-06-20T00:00:00-07:00
+status: active
+owner: DOC
+okf_version: "0.1"
+---
 # project-standards Context Budget
 
 Status: active
@@ -12,7 +23,7 @@ Baseline: `standards/context-budget.md`
 | Tier | Read When | Docs |
 |---|---|---|
 | First-read | Before changing shared standards or templates. | `AGENTS.md`, `README.md`, `CHANGELOG.md`, `docs/ops/standards-adoption.md` |
-| Surface-read | When touched surface requires it. | `docs/review/routing.md`, `docs/testing/local-gates.md`, `docs/release/release-and-deploy.md`, `docs/security/dependency-risk.md`, `docs/ops/cost-and-subscriptions.md`, `docs/ops/branch-and-worktree.md` |
+| Surface-read | When touched surface requires it. | `docs/review/routing.md`, `docs/testing/local-gates.md`, `docs/release/release-and-deploy.md`, `docs/security/dependency-risk.md`, `docs/ops/cost-and-subscriptions.md`, `docs/ops/branch-and-worktree.md`, `docs/ops/knowledge-format.md` |
 | Reference | When investigating history, rationale, or prior convergence work. | `docs/adr/`, `docs/cross-project-standards/` |
 
 ## Rules
@@ -39,4 +50,5 @@ Run a context budget check:
 - Long convergence history stays under `docs/cross-project-standards/`.
 - Active queue entries remain skim-sized.
 - New overlays include a read trigger.
+- Dense durable-doc directories include an `index.md` when agents need progressive disclosure.
 - Product-local methodology is promoted through upstream candidates, not copied into startup context.

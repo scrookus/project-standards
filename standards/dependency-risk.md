@@ -1,3 +1,15 @@
+---
+type: Standard
+title: Dependency Risk Standard
+description: Dependency risk, audit finding, and upgrade-review rules.
+resource: standards/dependency-risk.md
+tags: [standards, dependency, risk]
+timestamp: 2026-06-20T00:00:00-07:00
+standards_version: standards-v0.2
+status: baseline
+owner: SEC
+okf_version: "0.1"
+---
 # Dependency Risk Standard
 
 Version: standards-v0.2

@@ -66,10 +66,13 @@ Proposed next-baseline standards are not adopted obligations until the CTO appro
 
 - `standards/repository-controls.md` for git config, merge rules, branch protection, required checks, CI ownership, and bypass governance.
 - `standards/dev-tooling-and-package-versioning.md` for runtime/toolchain pins, package managers, lockfiles, dependency upgrade rules, Dependabot posture, and package publication.
+- `standards/knowledge-format.md` for OKF-compatible Markdown/frontmatter metadata, indexes, logs, and linkable agent-readable knowledge.
 
 Governance is recorded in `docs/adr/0001-shared-standards-home.md`. Changes are tracked in `CHANGELOG.md`.
 
 This repo adopts the baseline it publishes. Its local adoption record is `docs/ops/standards-adoption.md`; agents should read `AGENTS.md` before changing shared standards or templates.
+
+`project-standards/` is also the first adopter of the local OKF-compatible knowledge profile recorded in `docs/adr/0002-okf-compatible-knowledge-profile.md`. Shared standards now include YAML frontmatter and `standards/index.md` for progressive disclosure.
 
 Acceptance review is recorded in `docs/cross-project-standards/standards-v0.1-acceptance-review.md`.
 
