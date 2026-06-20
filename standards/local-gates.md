@@ -29,6 +29,7 @@ Each product repo must define local gates by changed surface. Gates should be ru
 | Product code | Lint/typecheck, unit tests, build |
 | Data model or migrations | Schema checks, migration dry run or local reset when feasible |
 | Auth/security | Security guard, targeted tests, SEC review |
+| Agent permission policy | Permission-policy diff, semantic verification, SEC and PLT review |
 | Architecture boundaries | Architecture check or documented manual ARC review |
 | E2e workflows | Relevant e2e or UAT smoke path |
 | Deploy/infrastructure | Stack-specific validation before deploy |
@@ -57,6 +58,8 @@ Data model changes, migrations, RPC changes, IAM/policy changes, and schema-affe
 - Approval or review lane.
 
 Stack examples such as Supabase SQL analyzer warnings, AWS IAM policy diffs, DynamoDB table/index changes, or CDK synthesis output stay product-local.
+
+Agent permission policies need semantic verification before they are treated as enforceable. Product overlays should state how the tool handles precedence, pattern matching, local overrides, shell wrappers, package scripts, and schema keys for the installed tool version.
 
 For migration-backed systems, the safety report must state whether existing migration files were edited. If an applied migration changed, stop and convert the work to a forward migration unless the product proves the file is still local-only and unapplied outside the current checkout.
 

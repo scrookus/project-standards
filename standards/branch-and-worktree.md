@@ -86,6 +86,8 @@ Do not put canonical project policy only in a private worktree-local file. If a 
 
 `.claude/settings.local.json` is local-only unless a product explicitly documents a different safe mechanism. Products may provide a committed example or setup step, but secrets, personal permissions, and machine-specific settings must not be committed.
 
+If local settings include agent permissions, they are private drift unless the product documents a permission authority model. Cross-project user permissions belong in a user-level baseline or managed authority, not in a worktree-local file. Agents may not edit local permission drift or canonical permission policy outside an explicit permission-change session.
+
 ## PR Requirement
 
 PR required by default for:

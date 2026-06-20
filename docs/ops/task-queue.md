@@ -34,6 +34,7 @@ This is the CTO-owned queue for shared standards and template work. Product repo
 | PSTD-012 | DOC | Done | High | Prepare `standards-v0.3` product adoption prompt. | Used as the Connections PR #615 adoption baseline; `standards-v0.3` is tagged from that proof case. | None |
 | PSTD-013 | DOC | Pending | Medium | Backfill OKF-compatible metadata beyond shared standards. | Convert priority overlays, templates, cross-project registers, and ADRs after the shared standards adoption proves the profile. | Do not bulk-edit historical docs without review; start with first-read and surface-read docs. |
 | PSTD-014 | DOC | Active | High | Coordinate `standards-v0.4` product adoption. | Use `docs/cross-project-standards/standards-v0.4-adoption-prompt.md` for Connections first; PickSix and TMTC wait until current work arcs close. | Do not interrupt active product work arcs. |
+| PSTD-015 | SEC | Pending | High | Decide agent-permission-boundaries baseline for `standards-v0.5`. | Use TMTC PLT-030 as proof case; verify whether PickSix and Connections have equivalent permission surfaces; decide user-level baseline location and adoption prompt. | Do not ask product agents to adopt until CTO locks a version bump. |
 
 ## Queue Rules
 

@@ -19,4 +19,5 @@
 
 ## Proposed Standards
 
+- [Agent Permission Boundaries](agent-permission-boundaries.md) - user-level, project-level, and local agent permission authority rules.
 - [Knowledge Format](knowledge-format.md) - OKF-compatible metadata, indexing, linking, and log rules.

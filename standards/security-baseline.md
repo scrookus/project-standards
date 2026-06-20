@@ -32,6 +32,7 @@ Each repo must define:
 - Privileged session assurance, step-up, or equivalent controls where the product has destructive, admin, payment, or cross-user actions.
 - Recovery paths for any elevated-auth or lockout-prone feature.
 - External service and vendor risk.
+- Agent permission boundaries, including any user-level baseline, project-level policy, and local-only permission drift.
 - Dependency-risk workflow.
 - Security gate expectations before release or deploy.
 - Disclosure response path.
@@ -44,6 +45,7 @@ Each repo must define:
 - Launch and production-support modes require SEC review for auth, permissions, secrets, dependency policy, and disclosure language.
 - Security enforcement must name where the real gate lives: UI-only controls are user experience, not security enforcement. Sensitive operations need API, database, IAM, or platform-side enforcement where the stack supports it.
 - Data access boundaries must be enforceable by tests, architecture checks, code review rules, or documented manual review. Convention alone is not enough for production-support repos.
+- Agent tool permissions are part of the trust boundary. Permission policy must be reviewable, and agents must not silently expand their own authority through local settings, generated config, package scripts, hooks, or tool wrappers.
 
 ## Overlay Examples
 

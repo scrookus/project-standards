@@ -9,6 +9,7 @@ Changed:
 - Promoted TMTC PLT-020 migration immutability feedback into release/deploy and local-gates guidance: applied migrations are immutable, drift is repaired by forward migration, and emergency unblocks require owner, SHA, verification, and 24-hour review.
 - Required branch protection for `main`/`master` and any branch that can deploy, promote environments, publish releases, or run production-support automation; bootstrap exceptions must be tracked as temporary gaps.
 - Required GitHub Dependabot alerts for every active or production-support GitHub repo, with any inability to enable alerts tracked as an owned, reviewed exception.
+- Added proposed `standards/agent-permission-boundaries.md` for `standards-v0.5`, defining user-level, project-level, and worktree-local permission authority plus explicit permission-change sessions.
 
 ## standards-v0.4 - 2026-06-20
 

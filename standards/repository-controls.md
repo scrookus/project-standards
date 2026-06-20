@@ -41,6 +41,7 @@ Each product overlay must state:
 - Dependency-update merge and branch-protection posture, with detailed automation policy owned by the dev-tooling/package-versioning overlay.
 - CI workflow names, triggers, path filters, concurrency rules, and cost posture.
 - Secrets and environment ownership for CI and deploy jobs.
+- Agent permission policy files, local permission setup scripts, and tool config that can expand or bypass agent authority.
 
 ## Baseline Posture
 
@@ -53,6 +54,7 @@ For active and production-support repos:
 - Required checks must match the local-gates overlay. If a local gate is required before merge, the repo must either enforce it remotely or record why it remains local-only.
 - CI workflows must be path-filtered or otherwise cost-aware where the user's subscription, Actions minutes, vendor quotas, or paid services make that material.
 - Agents must not change branch protection, repo settings, CI secrets, or merge methods without explicit CTO/PLT authority and a recorded review path.
+- Agents must not change user-level permission baselines, tracked project permission policy, or permission setup scripts without an explicit permission-change session and SEC/PLT review.
 
 ## Git Config Guidance
 

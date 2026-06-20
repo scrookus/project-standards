@@ -66,6 +66,7 @@ Current baseline: `standards-v0.4`
 
 Proposed next-baseline standards are not adopted obligations until the CTO approves a version bump. Current proposals:
 
+- `standards/agent-permission-boundaries.md` for proposed `standards-v0.5` user-level, project-level, and worktree-local agent permission authority. Product repos are not required to adopt it for `standards-v0.4`, but permission policy changes should already be treated as SEC/PLT-sensitive work.
 - `standards/knowledge-format.md` for proposed `standards-v0.5` OKF-compatible Markdown/frontmatter metadata, indexes, logs, and linkable agent-readable knowledge. `project-standards/` is piloting this profile, but product repos are not required to adopt it for `standards-v0.4`.
 
 Governance is recorded in `docs/adr/0001-shared-standards-home.md`. Changes are tracked in `CHANGELOG.md`. Git baseline tags start at `standards-v0.3` and continue forward.

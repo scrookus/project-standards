@@ -43,6 +43,7 @@ Each contract must state:
 - The required local gates before merge or deploy.
 - Branch/worktree and PR/direct-to-main rules.
 - Current subscription/cost posture and quota-sensitive commands.
+- Where agent permission authority lives, and that agents may not expand their own permissions outside an explicit permission-change session.
 - Any stack-specific hard hazards that must be seen before work starts.
 
 ## Context Budget
@@ -73,6 +74,8 @@ Reviewers stay independent by default. The person or agent that implemented a ch
 Agents must not infer queue-writing or approval authority from a branch name, file path, or prior session. If acting as CTO, the session prompt, task queue, or user instruction should say so explicitly.
 
 When role authority is ambiguous, agents may inspect and summarize, but should not mutate CTO-owned queue state, version decisions, deploy approvals, or cost/subscription posture.
+
+The same rule applies to permission authority. Agents must not infer permission-change authority from a prompt approval, local settings drift, or the need to unblock a task. User-level, project-level, and worktree-local permission rules are governed by `standards/agent-permission-boundaries.md` when adopted.
 
 ## Session Role Identity
 
