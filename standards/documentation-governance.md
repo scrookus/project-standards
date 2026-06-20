@@ -5,14 +5,14 @@ description: Canonical document homes, metadata, promotion, and review rules.
 resource: standards/documentation-governance.md
 tags: [standards, documentation, governance]
 timestamp: 2026-06-20T00:00:00-07:00
-standards_version: standards-v0.2
+standards_version: standards-v0.4
 status: baseline
 owner: DOC
 okf_version: "0.1"
 ---
 # Documentation Governance Standard
 
-Version: standards-v0.2
+Version: standards-v0.4
 Status: baseline
 Owner: DOC
 Review: DOC primary; ARC, PLT, SEC for owned surfaces
@@ -39,22 +39,16 @@ Every maintained document needs a canonical home, status, owner, and intended au
 
 ## Document Header
 
-Use OKF-compatible YAML frontmatter for new or materially changed durable docs:
+Use this header for durable docs:
 
 ```md
----
-type: Standard | Overlay | ADR | Runbook | TaskQueue | AdoptionLedger | Template | Agent | Review | Exception
-title: Human Readable Title
-description: One sentence summary.
-tags: [short, stable, tags]
-timestamp: YYYY-MM-DDTHH:MM:SSZ
 status: draft | active | accepted | superseded
 owner: ROLE
-okf_version: "0.1"
----
+audience: ROLE / ROLE
+last_reviewed: YYYY-MM-DD
 ```
 
-Legacy durable docs may still contain the older body header until they are touched:
+Projects that have not adopted a structured metadata profile may use the older body header until their next documentation-format upgrade:
 
 ```md
 Status: draft | active | accepted | superseded
@@ -65,7 +59,7 @@ Last reviewed: YYYY-MM-DD
 
 ADR files may use their own ADR format if they include status, date, and owner.
 
-See `standards/knowledge-format.md` for the OKF-compatible profile used by shared standards docs.
+Products may adopt the OKF-compatible profile in `standards/knowledge-format.md`, but it is not required by this baseline.
 
 ## Rules
 
@@ -74,7 +68,6 @@ See `standards/knowledge-format.md` for the OKF-compatible profile used by share
 - Move long closure notes, retrospectives, and historical detail out of active queues when they stop guiding current work.
 - Prefer links to product-local overlays over copying shared standards into product docs.
 - Keep first-read agent context concise. Long methodology, examples, and history should live in surface-read or reference docs with clear read triggers.
-- Use `index.md` files for progressive disclosure when a directory contains multiple durable concepts agents may need to browse selectively.
 - Treat product-local handoff libraries as temporary source material unless they are explicitly maintained as local overlays. Cross-project handoff docs should either become shared standards/templates, remain accurate local docs, or be archived.
 - When a product-local methodology decision may apply across projects, record it as an upstream candidate in the CTO-owned task queue or adoption ledger before copying it elsewhere.
 - At task closure, record reusable lessons as follow-up tasks or upstream candidates instead of burying them in ephemeral session summaries.

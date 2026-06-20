@@ -5,14 +5,14 @@ description: Branch, worktree, local Git communication, and cleanup rules for ag
 resource: standards/branch-and-worktree.md
 tags: [standards, branch, and, worktree]
 timestamp: 2026-06-20T00:00:00-07:00
-standards_version: standards-v0.2
+standards_version: standards-v0.4
 status: baseline
 owner: PLT
 okf_version: "0.1"
 ---
 # Branch And Worktree Standard
 
-Version: standards-v0.2
+Version: standards-v0.4
 Status: baseline
 Owner: PLT
 Review: DOC primary for format; PLT for workflow safety; SEC for emergency/security carve-outs

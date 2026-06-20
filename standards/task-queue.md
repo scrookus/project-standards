@@ -5,14 +5,14 @@ description: CTO-owned task queue, authority, mirror, and coordination rules.
 resource: standards/task-queue.md
 tags: [standards, task, queue]
 timestamp: 2026-06-20T00:00:00-07:00
-standards_version: standards-v0.2
+standards_version: standards-v0.4
 status: baseline
 owner: CTO
 okf_version: "0.1"
 ---
 # Task Queue Standard
 
-Version: standards-v0.2
+Version: standards-v0.4
 Status: baseline
 Owner: CTO
 Review: DOC primary for format; CTO for active work ownership; PLT, SEC for active work lanes

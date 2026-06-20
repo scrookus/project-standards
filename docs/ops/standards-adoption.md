@@ -18,7 +18,7 @@ Last reviewed: 2026-06-17
 
 ## Adopted Baseline
 
-Baseline: standards-v0.3
+Baseline: standards-v0.4
 Adopted on: 2026-06-20
 Adoption owner: DOC
 
