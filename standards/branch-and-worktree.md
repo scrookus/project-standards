@@ -53,7 +53,9 @@ git worktree add ../<repo>-<role>-<task> -b <role>/<task>
 2. Dedicated worktrees parent next to a bare repo: use `<repo>.git/` as the bare repo and `<repo>/<worktree-name>/` as the worktree parent. This is acceptable when the product documents the parent path clearly.
 3. In-repo `worktrees/` directory: use only when the product documents why nesting is worth the tradeoff and how agents avoid editing the wrong checkout.
 
-Avoid burying worktrees under tool-specific or hidden directories such as `.claude/worktrees/` unless the product has a deliberate local exception. Hidden nested worktrees make cleanup, path references, editor search, and agent ownership harder to inspect.
+Avoid burying worktrees under tool-specific or hidden directories such as `.claude/worktrees/`. Hidden nested worktrees make cleanup, path references, editor search, and agent ownership harder to inspect.
+
+A product may keep a hidden/tool-specific worktree path only as a documented compatibility exception, not as a default pattern. The exception must explain why the path is still needed, such as existing automation, launcher scripts, or live agent workflows that would be riskier to change midstream. It must also name the owner, cleanup command, and review or migration trigger for moving back to a visible layout.
 
 Use project-local branch prefixes when defined.
 
