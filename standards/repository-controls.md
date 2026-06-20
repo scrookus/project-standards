@@ -19,16 +19,16 @@ Review: DOC primary; PLT for repository settings and CI; SEC for protected branc
 
 ## Requirement
 
-Each active or production-support repo should document the repository controls that make branch, merge, CI, and release rules enforceable.
+Each active or production-support repo must document the repository controls that make branch, merge, CI, and release rules enforceable.
 
-This standard is proposed for the next baseline because the current v0.2 standards cover branch/worktree behavior and local gates, but do not require a consistent record of GitHub settings, merge methods, branch protection, required checks, or CI ownership.
+This standard requires a consistent record of GitHub settings, merge methods, branch protection, required checks, CI ownership, and bypass rules.
 
 ## Minimum Controls Record
 
-Each product overlay should state:
+Each product overlay must state:
 
 - Default branch and production branch, if different.
-- Protected branches and protection intent.
+- Protected branches, protection intent, and any branch that can deploy or promote an environment.
 - Allowed merge methods: merge commit, squash, rebase, or local exception.
 - Whether linear history is required.
 - Required PR review count and review lanes.
@@ -47,9 +47,11 @@ Each product overlay should state:
 For active and production-support repos:
 
 - PRs are the normal merge path for code, CI, deploy, dependency, security, release, and maintained operating docs.
-- Default or production branches should have branch protection unless the adoption ledger records a bootstrap or solo-maintainer exception.
-- Required checks should match the local-gates overlay. If a local gate is required before merge, the repo should either enforce it remotely or record why it remains local-only.
-- CI workflows should be path-filtered or otherwise cost-aware where the user's subscription, Actions minutes, vendor quotas, or paid services make that material.
+- `main` or `master` must be protected.
+- Any branch that triggers deployment, environment promotion, release publication, or production-support automation must be protected. This includes branches named `development`, `develop`, `dev`, `staging`, `release`, or product-local equivalents when CI/CD treats them as deploy sources.
+- Bootstrap or solo-maintainer exceptions are temporary gaps, not the default. They must be recorded in the adoption ledger or task queue with owner, rationale, compensating control, and review date.
+- Required checks must match the local-gates overlay. If a local gate is required before merge, the repo must either enforce it remotely or record why it remains local-only.
+- CI workflows must be path-filtered or otherwise cost-aware where the user's subscription, Actions minutes, vendor quotas, or paid services make that material.
 - Agents must not change branch protection, repo settings, CI secrets, or merge methods without explicit CTO/PLT authority and a recorded review path.
 
 ## Git Config Guidance

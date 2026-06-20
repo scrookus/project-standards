@@ -19,9 +19,9 @@ Review: DOC primary; PLT for tooling and CI; ENG for runtime/build impact; SEC f
 
 ## Requirement
 
-Each active or production-support repo should document its development toolchain, package manager, runtime versions, dependency update rules, and package/version release posture.
+Each active or production-support repo must document its development toolchain, package manager, runtime versions, dependency update rules, and package/version release posture.
 
-This standard is proposed for the next baseline because the current v0.2 standards cover dependency risk and local gates, but do not define how projects keep Node, package managers, build tools, internal packages, GitHub Actions, and lockfiles consistent.
+This standard defines how projects keep Node, package managers, build tools, internal packages, GitHub Actions, dependency automation, and lockfiles consistent.
 
 ## Minimum Toolchain Record
 
