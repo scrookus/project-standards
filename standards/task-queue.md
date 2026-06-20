@@ -64,6 +64,7 @@ Active task authority and agent-readable context do not have to be the same arti
 - If authority stays in a tracked repo file, the product must explain how agents avoid stale queue snapshots in worktrees.
 - If authority moves to GitHub Issues or another tracker, the product must explain label/status mapping, ID mapping, review ownership, and how repo-local mirrors are regenerated.
 - If authority moves to local state outside Git history, such as an append-only log, SQLite database, local memory directory, or generated queue store, the product must explain locking, backup, mirror generation, and when state is published to origin.
+- Shared local authority must be outside per-worktree branch snapshots or must use a documented refresh/lock protocol that prevents stale worktrees from overwriting newer task state.
 
 Do not let a stale mirror override the authority source. When task state affects current work, agents should check the authority or a documented fresh sync point before changing status, staging queue files, or committing queue-related edits.
 

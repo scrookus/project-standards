@@ -53,6 +53,19 @@ Use project-local branch prefixes when defined.
 
 After creating a worktree, run any project-local setup required for agent context, hooks, local settings, or environment files. Each product must document those steps if missing them would cause agents to miss local rules or shared-state locks.
 
+## Worktree-Local And Shared-Local Artifacts
+
+Worktrees duplicate tracked files, but they do not automatically share every piece of local coordination state. Each product should classify worktree-sensitive artifacts:
+
+- Versioned shared artifacts: committed files that every branch/worktree should receive through Git, such as `AGENTS.md`, hooks, setup scripts, templates, and durable docs.
+- Shared local authority: branch-independent local state that multiple worktrees must consult before acting, such as a CTO queue store, append-only coordination log, lock file, or generated state database.
+- Generated mirrors: tracked or untracked views produced from the authority for startup context. Mirrors must say where the authority lives and how to refresh them.
+- Private worktree-local files: credentials, `.env` files, `.claude/settings.local.json`, editor settings, runtime locks, and machine/user preferences.
+
+Do not put canonical project policy only in a private worktree-local file. If a `.local` file contains a rule every agent must follow, move the rule to a committed overlay, setup script, checked-in template, hook, or documented shared local authority.
+
+`.claude/settings.local.json` is local-only unless a product explicitly documents a different safe mechanism. Products may provide a committed example or setup step, but secrets, personal permissions, and machine-specific settings must not be committed.
+
 ## PR Requirement
 
 PR required by default for:

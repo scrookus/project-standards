@@ -42,9 +42,11 @@ Required v0.3 adoption scope:
    - protected branches and intended settings
    - merge methods and review requirements
    - required checks and CI workflow names
+   - push policy and origin-publication triggers
    - direct-to-main/bypass rules
    - branch cleanup policy
    - CI/deploy secrets and environment ownership
+   - worktree-sensitive artifact classes: versioned shared, shared local authority, generated mirrors, and private worktree-local files
 3. Add local overlay coverage for dev tooling and package versioning:
    - runtime/toolchain versions
    - package manager and deterministic install command

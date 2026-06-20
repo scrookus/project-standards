@@ -19,6 +19,8 @@ Baseline: `standards/branch-and-worktree.md`
 
 After creating a worktree, copy or recreate local-only agent settings needed for that path. `.claude/settings.local.json` remains local-only per checkout/worktree and must not be committed.
 
+If a local setting becomes required for every standards worktree, promote it to a committed template, setup note, hook, or shared local authority. Do not rely on `.claude/settings.local.json` as the only home for project policy.
+
 ## PR Closure
 
 For queued standards work, include `Closes <ID>` or `Task: <ID>` in the PR body. After merge, update `CHANGELOG.md` and affected product adoption tasks as needed.

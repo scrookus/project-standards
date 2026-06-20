@@ -20,6 +20,7 @@ Changed:
 - Added session role identity guidance to the agent contract standard, based on Connections' clearer CTO/ENG role startup model.
 - Incorporated Connections `standards-v0.3` adoption feedback: source-backed inventory writing, local role-mapping-aware review routing, fresh-context lane review as a candidate pattern, and canonical Dependabot/Renovate policy ownership in dev-tooling.
 - Added local-first Git communication guidance: agents should not use origin pushes as routine coordination, and products must document push policy plus any local queue authority that sits outside Git history.
+- Clarified worktree-sensitive artifact classes so shared local authority, generated mirrors, and private worktree-local files such as `.claude/settings.local.json` do not get confused.
 
 ## standards-v0.2 - 2026-06-16
 
