@@ -115,7 +115,20 @@ Each product must define its allowed carve-out categories and verification rules
 
 ## PR Closure
 
-When work corresponds to a queued task, the PR body should name the task ID with `Closes <ID>` or the product's local equivalent. After the PR merges, clean up local/remote branches and stale worktrees as part of the same closure pass unless the product has a stronger branch-retention rule.
+When work corresponds to a queued task, the PR body should name the task ID with `Closes <ID>` or the product's local equivalent.
+
+Before ending a worktree-based task, the responsible agent should complete a closure pass:
+
+- Confirm the task outcome: merged, abandoned, handed off, blocked, or retained.
+- Summarize what changed, what was verified, and what remains.
+- Capture lessons learned that would improve future agent work, review routing, local gates, queue handling, or shared standards.
+- Propose concrete follow-up tasks or upstream standards candidates when the lesson is reusable.
+- Remove the stale worktree and local branch after merge or abandonment, unless the product documents a retention reason.
+- State any retained worktree, branch, or remote branch and who owns the next action.
+
+Worktree cleanup is part of task closure. Agents should not leave stale worktrees behind silently. If removal is unsafe because there are unmerged commits, dirty files, running services, or another agent may own the checkout, stop and report the blocker instead of deleting it.
+
+After the PR merges, clean up remote branches as part of the same closure pass unless the product has a stronger branch-retention rule.
 
 ## Queue And Ownership
 

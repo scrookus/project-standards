@@ -47,6 +47,7 @@ ADR files may use their own ADR format if they include status, date, and owner.
 - Keep first-read agent context concise. Long methodology, examples, and history should live in surface-read or reference docs with clear read triggers.
 - Treat product-local handoff libraries as temporary source material unless they are explicitly maintained as local overlays. Cross-project handoff docs should either become shared standards/templates, remain accurate local docs, or be archived.
 - When a product-local methodology decision may apply across projects, record it as an upstream candidate in the CTO-owned task queue or adoption ledger before copying it elsewhere.
+- At task closure, record reusable lessons as follow-up tasks or upstream candidates instead of burying them in ephemeral session summaries.
 - Reusable methodology becomes shared only after it is added to `project-standards/`, reviewed by the owning lanes, and adopted back into product overlays through explicit product tasks.
 
 ## Local-To-Shared Promotion

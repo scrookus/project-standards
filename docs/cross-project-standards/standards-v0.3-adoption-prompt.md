@@ -45,6 +45,7 @@ Required v0.3 adoption scope:
    - push policy and origin-publication triggers
    - direct-to-main/bypass rules
    - branch cleanup policy
+   - worktree closure and removal policy
    - CI/deploy secrets and environment ownership
    - worktree-sensitive artifact classes: versioned shared, shared local authority, generated mirrors, and private worktree-local files
 3. Add local overlay coverage for dev tooling and package versioning:
@@ -82,3 +83,4 @@ Expected output:
 4. Gaps queued with task IDs.
 5. Any GitHub-setting or package-version facts that still need human/`gh` verification.
 6. Recommended review lanes before merge.
+7. Worktree cleanup expectations and any retained-worktree exception.
