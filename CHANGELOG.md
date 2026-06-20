@@ -22,7 +22,7 @@ Changed:
 - Added local-first Git communication guidance: agents should not use origin pushes as routine coordination, and products must document push policy plus any local queue authority that sits outside Git history.
 - Clarified worktree-sensitive artifact classes so shared local authority, generated mirrors, and private worktree-local files such as `.claude/settings.local.json` do not get confused.
 - Added worktree closure guidance requiring agents to summarize outcomes, capture reusable lessons, propose follow-ups or standards candidates, and remove stale worktrees unless retention is explicitly owned.
-- Added a preferred worktree layout order: sibling directories first, a documented parent next to a bare repo second, and nested in-repo or hidden tool-specific worktrees only as documented compatibility exceptions with owners, cleanup commands, and review triggers.
+- Added a preferred worktree layout order: sibling directories first, a documented parent next to a bare repo second, and nested in-repo worktrees only as explicit product exceptions; hidden tool-specific worktrees such as `.claude/worktrees/` are not allowed for new work and must be migrated when encountered.
 
 ## standards-v0.2 - 2026-06-16
 
