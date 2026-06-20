@@ -23,7 +23,7 @@ Each product repo must define how dependency risk is detected, reviewed, accepte
 
 ## Minimum Workflow
 
-1. Detect through package manager audit, lockfile review, pinned-action review, secret scanning, or equivalent stack tooling.
+1. Detect through Dependabot alerts, package manager audit, lockfile review, pinned-action review, secret scanning, or equivalent stack tooling.
 2. Classify severity and affected surface.
 3. Prefer upgrade or removal.
 4. If accepting risk, document the allowlist entry.
@@ -51,6 +51,8 @@ Good rationale examples:
 
 ## Rules
 
+- GitHub Dependabot alerts must be enabled for every active or production-support GitHub repo.
+- If a repo cannot enable Dependabot alerts, the adoption ledger or task queue must record the reason, owner, compensating dependency-risk signal, and review date.
 - Accepted dependency risk must be explicit and reviewable.
 - Public-facing packages, auth surfaces, deploy tooling, and CI actions require SEC review.
 - Pinned GitHub Actions or checksum-verified installers are preferred for production-support repos.

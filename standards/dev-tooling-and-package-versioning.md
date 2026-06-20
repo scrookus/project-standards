@@ -68,6 +68,8 @@ When an upgrade changes how tests, coverage, generated output, migrations, or pa
 
 ## Automation And Dependabot
 
+Dependabot alerts must be enabled for every active or production-support GitHub repo. See `standards/dependency-risk.md` for the required alert posture and exception record.
+
 If the repo uses Dependabot, Renovate, or equivalent automation, the product overlay should document:
 
 - Grouping rules.

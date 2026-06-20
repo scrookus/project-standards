@@ -8,6 +8,7 @@ Changed:
 - Adopted an OKF-compatible knowledge profile in `project-standards`: shared standards now carry YAML frontmatter, `standards/index.md` supports progressive disclosure, and `PSTD-013` tracks staged backfill beyond the standards directory. OKF remains proposed for `standards-v0.5`, not mandatory for product `standards-v0.4` adoption.
 - Promoted TMTC PLT-020 migration immutability feedback into release/deploy and local-gates guidance: applied migrations are immutable, drift is repaired by forward migration, and emergency unblocks require owner, SHA, verification, and 24-hour review.
 - Required branch protection for `main`/`master` and any branch that can deploy, promote environments, publish releases, or run production-support automation; bootstrap exceptions must be tracked as temporary gaps.
+- Required GitHub Dependabot alerts for every active or production-support GitHub repo, with any inability to enable alerts tracked as an owned, reviewed exception.
 
 ## standards-v0.4 - 2026-06-20
 
