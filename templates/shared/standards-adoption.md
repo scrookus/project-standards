@@ -7,11 +7,12 @@ Last reviewed: YYYY-MM-DD
 
 ## Adopted Baseline
 
-Baseline: standards-v0.2
+Baseline: standards-vX.Y
+Baseline tag: standards-vX.Y
 Adopted on: YYYY-MM-DD
 Adoption owner: TODO
 
-Shared standards source: `project-standards/standards/`
+Shared standards source: `project-standards/standards/` at the published baseline tag.
 
 ## Local Overlays
 

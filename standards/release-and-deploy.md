@@ -46,6 +46,21 @@ Each product repo must document release and deploy responsibilities before produ
 - Agents must confirm before deploying or promoting environments. The confirmation request must name the target, source, expected scope, and blast radius.
 - Environment promotion should be tied to code/config changes in scope. Do not promote staging/dev to production only to "make things current" unless the product overlay defines that as an approved release operation.
 
+## Standards Baseline Tags
+
+Published shared standards baselines are released by annotated Git tag beginning with `standards-v0.3`.
+
+Product adoption must cite and read the published tag for the baseline being adopted, such as `standards-v0.4`. Do not use a local `project-standards` checkout as the baseline source unless the task explicitly says to inspect unreleased standards work.
+
+Standards maintainers must do draft work in a separate visible branch/worktree. Local `main` should represent published or ready-to-publish standards state so product agents are not pointed at in-progress work by accident.
+
+When a standards baseline is locked:
+
+- Update `CHANGELOG.md`.
+- Update `README.md` and the `project-standards` adoption ledger.
+- Create an annotated tag named exactly like the baseline, such as `standards-v0.4`.
+- Push the commit and tag together when the baseline is ready for product adoption.
+
 ## Static Site And SPA Cache Policy
 
 Static-site and SPA products should document their cache policy when cache behavior can affect release correctness.

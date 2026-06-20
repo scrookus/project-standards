@@ -35,7 +35,7 @@ Each contract must state:
 - What the project is and who it serves.
 - Current mode: bootstrap, active development, production support, or maintenance.
 - The agent's operating role for the session, especially when acting as CTO or another queue-owning role.
-- Where shared standards are adopted from and which baseline version is current.
+- Where shared standards are adopted from, which baseline version is current, and which Git tag anchors that baseline.
 - Where local overlays live.
 - Which docs are first-read versus surface-read or reference-only.
 - The review model and reviewer-independence rule.
@@ -85,6 +85,14 @@ The signal should be visible early in the session and stable enough that the age
 - Am I allowed to mutate role-owned state, or only inspect and recommend?
 
 If the role is unclear, the agent should stop before mutating role-owned state and ask for direction. Do not rely on branch names, stale memory, or inferred task topic as the only role identity source.
+
+## Standards Source
+
+Product adoption agents must use the published standards Git tag named in the product's adoption ledger or prompt, such as `standards-v0.4`.
+
+Do not treat an arbitrary local `project-standards` checkout as the current baseline. Local `main`, feature branches, and worktrees may contain unreleased standards work. Agents may inspect unreleased standards only when the user explicitly asks for draft or next-version work.
+
+When adopting a baseline, record the version and tag. When drafting standards changes, work in a separate visible worktree/branch so product agents reading published baselines are not confused by local in-progress changes.
 
 ## Local Overlay Examples
 

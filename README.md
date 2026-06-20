@@ -70,6 +70,8 @@ Proposed next-baseline standards are not adopted obligations until the CTO appro
 
 Governance is recorded in `docs/adr/0001-shared-standards-home.md`. Changes are tracked in `CHANGELOG.md`. Git baseline tags start at `standards-v0.3` and continue forward.
 
+Product adoption agents should read the published tag for the baseline they are adopting, such as `standards-v0.4`, rather than an arbitrary local checkout of `project-standards`. Standards drafting should happen on a separate visible worktree/branch until a new baseline is locked, tagged, and pushed.
+
 This repo adopts the baseline it publishes. Its local adoption record is `docs/ops/standards-adoption.md`; agents should read `AGENTS.md` before changing shared standards or templates.
 
 `project-standards/` is also the first adopter of the local OKF-compatible knowledge profile recorded in `docs/adr/0002-okf-compatible-knowledge-profile.md`. Shared standards now include YAML frontmatter and `standards/index.md` for progressive disclosure.

@@ -4,6 +4,7 @@
 
 Changed:
 
+- Clarified that product adoption agents must read published standards tags, not arbitrary local `project-standards` checkouts, and that standards drafting should happen in separate visible worktrees/branches until tagged.
 - Adopted an OKF-compatible knowledge profile in `project-standards`: shared standards now carry YAML frontmatter, `standards/index.md` supports progressive disclosure, and `PSTD-013` tracks staged backfill beyond the standards directory. OKF remains proposed for `standards-v0.5`, not mandatory for product `standards-v0.4` adoption.
 
 ## standards-v0.4 - 2026-06-20

@@ -37,6 +37,8 @@ Read first:
 7. `project-standards/standards/repository-controls.md`
 8. `project-standards/standards/documentation-governance.md`
 
+Use `project-standards` at the published `standards-v0.4` tag. Do not read a local `project-standards` checkout's current branch as the baseline unless the user explicitly asks for unreleased standards work.
+
 Mission:
 
 Adopt `standards-v0.4` locally while preserving product-local overlays and active work arcs.
