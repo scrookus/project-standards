@@ -43,11 +43,17 @@ Create or use a separate worktree when any are true:
 - The task touches CI, deploy, migrations, generated artifacts, package upgrades, or other high-blast-radius surfaces.
 - The user asks agents to work in parallel.
 
-Recommended shape:
+Recommended layout, in order of preference:
 
 ```sh
 git worktree add ../<repo>-<role>-<task> -b <role>/<task>
 ```
+
+1. Sibling directories: keep worktrees next to the main checkout or bare repo, such as `<repo>-main/` and `<repo>-plt-017/`. This is the default because it avoids nesting confusion.
+2. Dedicated worktrees parent next to a bare repo: use `<repo>.git/` as the bare repo and `<repo>/<worktree-name>/` as the worktree parent. This is acceptable when the product documents the parent path clearly.
+3. In-repo `worktrees/` directory: use only when the product documents why nesting is worth the tradeoff and how agents avoid editing the wrong checkout.
+
+Avoid burying worktrees under tool-specific or hidden directories such as `.claude/worktrees/` unless the product has a deliberate local exception. Hidden nested worktrees make cleanup, path references, editor search, and agent ownership harder to inspect.
 
 Use project-local branch prefixes when defined.
 
@@ -130,7 +136,7 @@ Durable closure documentation belongs in the product's branch/worktree overlay f
 
 Worktree cleanup is part of task closure. Agents must not leave stale worktrees behind silently. If removal is unsafe because there are unmerged commits, dirty files, running services, or another agent may own the checkout, stop and report the blocker instead of deleting it.
 
-After the PR merges, clean up remote branches as part of the same closure pass unless the product has a stronger branch-retention rule.
+After the PR merges, clean up remote branches and run or request the product's documented worktree prune/list check as part of the same closure pass unless the product has a stronger branch-retention rule.
 
 ## Queue And Ownership
 
