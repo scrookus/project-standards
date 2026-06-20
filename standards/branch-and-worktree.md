@@ -66,6 +66,22 @@ PR required by default for:
 
 Review routes by touched surface before merge.
 
+## Local-First Git Communication
+
+Use local commits, task queues, handoff notes, and product-local coordination files for in-progress agent communication. Do not use `git push` as the default way to tell other agents what changed.
+
+Push to origin when one of these is true:
+
+- A PR, review, or remote CI run is needed.
+- The branch is ready for another agent or human to pick up from a different machine or checkout.
+- The work is long-running and the product documents origin as the backup or handoff point.
+- The user explicitly asks for a push.
+- A product-local release, deploy, or automation flow requires the remote branch.
+
+Avoid pushing every checkpoint commit. Frequent origin pushes create noisy remote state, trigger unnecessary CI or deploy workflows, and make branch ownership harder to reason about when multiple agents are active.
+
+If an agent needs to share unfinished work without opening a PR, prefer the product's documented local handoff or queue mechanism. If a remote push is still needed for handoff, state the reason and whether CI/deploy side effects are expected.
+
 ## Direct-To-Main Carve-Outs
 
 Direct-to-main is allowed only when explicitly documented by the product and one of these applies:

@@ -24,6 +24,7 @@ Each product overlay should state:
 - Who may bypass branch protection, and under what recorded emergency process.
 - Direct-to-main carve-outs and their required commit or task notation.
 - Branch deletion/retention policy after merge.
+- Push policy: when branches should stay local, when origin publication is required, and which pushes may trigger CI, deploy, or review workflows.
 - Local hook installation expectations.
 - Dependency-update merge and branch-protection posture, with detailed automation policy owned by the dev-tooling/package-versioning overlay.
 - CI workflow names, triggers, path filters, concurrency rules, and cost posture.
