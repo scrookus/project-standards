@@ -5,15 +5,15 @@ description: Repository settings, branch protection, CI ownership, merge, and by
 resource: standards/repository-controls.md
 tags: [standards, repository, controls]
 timestamp: 2026-06-20T00:00:00-07:00
-standards_version: proposed-standards-v0.3
-status: proposed
+standards_version: standards-v0.3
+status: baseline
 owner: PLT
 okf_version: "0.1"
 ---
 # Repository Controls Standard
 
-Version: proposed-standards-v0.3
-Status: proposed
+Version: standards-v0.3
+Status: baseline
 Owner: PLT
 Review: DOC primary; PLT for repository settings and CI; SEC for protected branches, secrets, and bypass rules; CTO for cost/subscription fit
 

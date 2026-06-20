@@ -4,6 +4,19 @@
 
 Changed:
 
+- Added local-first Git communication guidance: agents should not use origin pushes as routine coordination, and products must document push policy plus any local queue authority that sits outside Git history.
+- Clarified worktree-sensitive artifact classes so shared local authority, generated mirrors, and private worktree-local files such as `.claude/settings.local.json` do not get confused.
+- Added worktree closure guidance requiring agents to summarize outcomes, capture reusable lessons, propose follow-ups or standards candidates, and remove stale worktrees unless retention is explicitly owned.
+- Added a preferred worktree layout order: sibling directories first, a documented parent next to a bare repo second, and nested in-repo worktrees only as explicit product exceptions; hidden tool-specific worktrees such as `.claude/worktrees/` are not allowed for new work and must be migrated when encountered.
+- Adopted an OKF-compatible knowledge profile in `project-standards`: shared standards now carry YAML frontmatter, `standards/index.md` supports progressive disclosure, and `PSTD-013` tracks staged backfill beyond the standards directory.
+
+## standards-v0.3 - 2026-06-19
+
+Baseline tag: `standards-v0.3`
+Baseline anchor: Connections adoption PR #615
+
+Changed:
+
 - Added the PickSix agent-handoff inventory and promoted reusable coverage-ratchet, data/migration safety, data-boundary, and privileged-auth assurance principles into existing v0.2 standards.
 - Marked design-system and observability handoff patterns as future standards candidates rather than mandatory v0.2 baseline obligations.
 - Recorded Connections adoption findings as upstream candidates for memory routing, inbox-to-queue separation, carve-out catalogs, task ID counters, and public-safe pointers to private runbooks.
@@ -19,11 +32,6 @@ Changed:
 - Promoted TMTC ADR 0016's task-queue authority versus mirror principle into the shared task-queue standard without mandating GitHub Issues for every repo.
 - Added session role identity guidance to the agent contract standard, based on Connections' clearer CTO/ENG role startup model.
 - Incorporated Connections `standards-v0.3` adoption feedback: source-backed inventory writing, local role-mapping-aware review routing, fresh-context lane review as a candidate pattern, and canonical Dependabot/Renovate policy ownership in dev-tooling.
-- Added local-first Git communication guidance: agents should not use origin pushes as routine coordination, and products must document push policy plus any local queue authority that sits outside Git history.
-- Clarified worktree-sensitive artifact classes so shared local authority, generated mirrors, and private worktree-local files such as `.claude/settings.local.json` do not get confused.
-- Added worktree closure guidance requiring agents to summarize outcomes, capture reusable lessons, propose follow-ups or standards candidates, and remove stale worktrees unless retention is explicitly owned.
-- Added a preferred worktree layout order: sibling directories first, a documented parent next to a bare repo second, and nested in-repo worktrees only as explicit product exceptions; hidden tool-specific worktrees such as `.claude/worktrees/` are not allowed for new work and must be migrated when encountered.
-- Adopted an OKF-compatible knowledge profile in `project-standards`: shared standards now carry YAML frontmatter, `standards/index.md` supports progressive disclosure, and `PSTD-013` tracks staged backfill beyond the standards directory.
 
 ## standards-v0.2 - 2026-06-16
 

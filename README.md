@@ -45,7 +45,7 @@ git pull
 
 ### Shared standards baseline
 
-Current baseline: `standards-v0.2`
+Current baseline: `standards-v0.3`
 
 | Standard | File |
 |---|---|
@@ -61,14 +61,14 @@ Current baseline: `standards-v0.2`
 | Local gates | `standards/local-gates.md` |
 | Dependency risk | `standards/dependency-risk.md` |
 | Release and deploy | `standards/release-and-deploy.md` |
+| Repository controls | `standards/repository-controls.md` |
+| Dev tooling and package versioning | `standards/dev-tooling-and-package-versioning.md` |
 
 Proposed next-baseline standards are not adopted obligations until the CTO approves a version bump. Current proposals:
 
-- `standards/repository-controls.md` for git config, merge rules, branch protection, required checks, CI ownership, and bypass governance.
-- `standards/dev-tooling-and-package-versioning.md` for runtime/toolchain pins, package managers, lockfiles, dependency upgrade rules, Dependabot posture, and package publication.
 - `standards/knowledge-format.md` for OKF-compatible Markdown/frontmatter metadata, indexes, logs, and linkable agent-readable knowledge.
 
-Governance is recorded in `docs/adr/0001-shared-standards-home.md`. Changes are tracked in `CHANGELOG.md`.
+Governance is recorded in `docs/adr/0001-shared-standards-home.md`. Changes are tracked in `CHANGELOG.md`. Git baseline tags start at `standards-v0.3` and continue forward.
 
 This repo adopts the baseline it publishes. Its local adoption record is `docs/ops/standards-adoption.md`; agents should read `AGENTS.md` before changing shared standards or templates.
 

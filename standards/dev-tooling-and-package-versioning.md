@@ -5,15 +5,15 @@ description: Runtime, package manager, lockfile, automation, and package-version
 resource: standards/dev-tooling-and-package-versioning.md
 tags: [standards, dev, tooling, and, package, versioning]
 timestamp: 2026-06-20T00:00:00-07:00
-standards_version: proposed-standards-v0.3
-status: proposed
+standards_version: standards-v0.3
+status: baseline
 owner: PLT
 okf_version: "0.1"
 ---
 # Dev Tooling And Package Versioning Standard
 
-Version: proposed-standards-v0.3
-Status: proposed
+Version: standards-v0.3
+Status: baseline
 Owner: PLT
 Review: DOC primary; PLT for tooling and CI; ENG for runtime/build impact; SEC for supply-chain risk; CTO for subscription, cost, and vendor posture
 

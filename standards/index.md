@@ -11,12 +11,12 @@
 - [Documentation Governance](documentation-governance.md) - canonical document homes, metadata, promotion, and review.
 - [Local Gates](local-gates.md) - local verification, test, coverage, and pre-merge gates.
 - [Release And Deploy](release-and-deploy.md) - release, deploy, environment promotion, and rollback.
+- [Repository Controls](repository-controls.md) - repository settings, branch protection, CI ownership, merge, and bypass rules.
 - [Review Routing](review-routing.md) - review lane routing and reviewer independence.
 - [Security Baseline](security-baseline.md) - baseline security, secrets, auth, and trust-boundary rules.
 - [Task Queue](task-queue.md) - CTO-owned task queue, authority, mirror, and coordination rules.
+- [Dev Tooling And Package Versioning](dev-tooling-and-package-versioning.md) - runtime, package manager, lockfile, automation, and package-versioning rules.
 
 ## Proposed Standards
 
-- [Dev Tooling And Package Versioning](dev-tooling-and-package-versioning.md) - runtime, package manager, lockfile, automation, and package-versioning rules.
 - [Knowledge Format](knowledge-format.md) - OKF-compatible metadata, indexing, linking, and log rules.
-- [Repository Controls](repository-controls.md) - repository settings, branch protection, CI ownership, merge, and bypass rules.
