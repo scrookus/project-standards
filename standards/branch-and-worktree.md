@@ -55,7 +55,7 @@ After creating a worktree, run any project-local setup required for agent contex
 
 ## Worktree-Local And Shared-Local Artifacts
 
-Worktrees duplicate tracked files, but they do not automatically share every piece of local coordination state. Each product should classify worktree-sensitive artifacts:
+Worktrees duplicate tracked files, but they do not automatically share every piece of local coordination state. Each product must classify worktree-sensitive artifacts:
 
 - Versioned shared artifacts: committed files that every branch/worktree should receive through Git, such as `AGENTS.md`, hooks, setup scripts, templates, and durable docs.
 - Shared local authority: branch-independent local state that multiple worktrees must consult before acting, such as a CTO queue store, append-only coordination log, lock file, or generated state database.
@@ -115,9 +115,9 @@ Each product must define its allowed carve-out categories and verification rules
 
 ## PR Closure
 
-When work corresponds to a queued task, the PR body should name the task ID with `Closes <ID>` or the product's local equivalent.
+When work corresponds to a queued task, the PR body must name the task ID with `Closes <ID>` or the product's local equivalent.
 
-Before ending a worktree-based task, the responsible agent should complete a closure pass:
+Before ending a worktree-based task, the responsible agent must complete a closure pass:
 
 - Confirm the task outcome: merged, abandoned, handed off, blocked, or retained.
 - Summarize what changed, what was verified, and what remains.
@@ -126,7 +126,9 @@ Before ending a worktree-based task, the responsible agent should complete a clo
 - Remove the stale worktree and local branch after merge or abandonment, unless the product documents a retention reason.
 - State any retained worktree, branch, or remote branch and who owns the next action.
 
-Worktree cleanup is part of task closure. Agents should not leave stale worktrees behind silently. If removal is unsafe because there are unmerged commits, dirty files, running services, or another agent may own the checkout, stop and report the blocker instead of deleting it.
+Durable closure documentation belongs in the product's branch/worktree overlay for policy, the task queue or coordination surface for follow-up work, and the adoption ledger for standards exceptions. Ephemeral session summaries are not enough for reusable lessons or retained-worktree ownership.
+
+Worktree cleanup is part of task closure. Agents must not leave stale worktrees behind silently. If removal is unsafe because there are unmerged commits, dirty files, running services, or another agent may own the checkout, stop and report the blocker instead of deleting it.
 
 After the PR merges, clean up remote branches as part of the same closure pass unless the product has a stronger branch-retention rule.
 
