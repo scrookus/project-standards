@@ -58,6 +58,10 @@ Data model changes, migrations, RPC changes, IAM/policy changes, and schema-affe
 
 Stack examples such as Supabase SQL analyzer warnings, AWS IAM policy diffs, DynamoDB table/index changes, or CDK synthesis output stay product-local.
 
+For migration-backed systems, the safety report must state whether existing migration files were edited. If an applied migration changed, stop and convert the work to a forward migration unless the product proves the file is still local-only and unapplied outside the current checkout.
+
+When repairing drift caused by a historical migration edit, include the verification query or inspection method, the forward migration name, and the expected production/shared-environment reconciliation.
+
 ## Test Signal Guidance
 
 Tests must be described honestly. Boundary, mock, and adapter tests are useful insurance against contract drift, but they are not proof that production integrations are healthy unless they exercise the production path.

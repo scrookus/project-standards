@@ -6,6 +6,7 @@ Changed:
 
 - Clarified that product adoption agents must read published standards tags, not arbitrary local `project-standards` checkouts, and that standards drafting should happen in separate visible worktrees/branches until tagged.
 - Adopted an OKF-compatible knowledge profile in `project-standards`: shared standards now carry YAML frontmatter, `standards/index.md` supports progressive disclosure, and `PSTD-013` tracks staged backfill beyond the standards directory. OKF remains proposed for `standards-v0.5`, not mandatory for product `standards-v0.4` adoption.
+- Promoted TMTC PLT-020 migration immutability feedback into release/deploy and local-gates guidance: applied migrations are immutable, drift is repaired by forward migration, and emergency unblocks require owner, SHA, verification, and 24-hour review.
 
 ## standards-v0.4 - 2026-06-20
 

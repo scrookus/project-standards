@@ -46,6 +46,21 @@ Each product repo must document release and deploy responsibilities before produ
 - Agents must confirm before deploying or promoting environments. The confirmation request must name the target, source, expected scope, and blast radius.
 - Environment promotion should be tied to code/config changes in scope. Do not promote staging/dev to production only to "make things current" unless the product overlay defines that as an approved release operation.
 
+## Migration Immutability
+
+Schema, database, IAM, policy, or infrastructure migration files are immutable once applied beyond local-only development. Do not retroactively edit an applied migration to fix production or shared-environment state.
+
+Fix applied-history mistakes with a new forward migration or equivalent forward-only change. The new migration must be idempotent when it repairs uncertain production state, and the PR or release note must explain which earlier migration or deploy state it reconciles.
+
+Products with migrations must document:
+
+- When a migration becomes immutable.
+- How to verify whether a production/shared environment already has the intended object, grant, policy, or schema state.
+- The forward-fix pattern for missing objects, permissions, grants, policies, or data shape.
+- The emergency unblock path, including owner approval, exact command, target environment, commit SHA, verification, and review within 24 hours.
+
+Emergency direct pushes or migration applies from a working tree are allowed only for live production repair when the product overlay explicitly permits them. They must not become the normal path for non-emergency work.
+
 ## Standards Baseline Tags
 
 Published shared standards baselines are released by annotated Git tag beginning with `standards-v0.3`.
