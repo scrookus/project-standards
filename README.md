@@ -69,6 +69,8 @@ Proposed next-baseline standards are not adopted obligations until the CTO appro
 - `standards/agent-permission-boundaries.md` for proposed `standards-v0.5` user-level, project-level, and worktree-local agent permission authority. Product repos are not required to adopt it for `standards-v0.4`, but permission policy changes should already be treated as SEC/PLT-sensitive work.
 - `standards/knowledge-format.md` for proposed `standards-v0.5` OKF-compatible Markdown/frontmatter metadata, indexes, logs, and linkable agent-readable knowledge. `project-standards/` is piloting this profile, but product repos are not required to adopt it for `standards-v0.4`.
 
+Shared template: `templates/shared/agent-runtime-permission-report.md` provides an inspect-only report for agent runtime permission state, including Codex-style sandbox/session approvals and Claude-style settings.
+
 Governance is recorded in `docs/adr/0001-shared-standards-home.md`. Changes are tracked in `CHANGELOG.md`. Git baseline tags start at `standards-v0.3` and continue forward.
 
 Product adoption agents should read the published tag for the baseline they are adopting, such as `standards-v0.4`, rather than an arbitrary local checkout of `project-standards`. Standards drafting should happen on a separate visible worktree/branch until a new baseline is locked, tagged, and pushed.

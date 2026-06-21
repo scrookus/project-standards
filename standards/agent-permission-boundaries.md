@@ -183,6 +183,21 @@ At minimum, products should verify:
 
 Record results in the product overlay, ADR, runbook, or task closure notes before treating the policy as enforceable.
 
+## Runtime Permission Report
+
+Products should use `templates/shared/agent-runtime-permission-report.md` or a product-local equivalent before sensitive work, during standards adoption, after permission-related incidents, or when the user asks whether the current agent is compliant.
+
+The report should be inspect-only by default and should state:
+
+- Current writable roots, network posture, approved command prefixes, ask-gated operations, and denied operations.
+- Where user-level, managed, project-level, session-level, and worktree-local permission state lives.
+- Whether the agent can change any permission authority during the current session.
+- Any permission changes made this session and who approved them.
+- Unknown or unverifiable permission state.
+- A proceed / caution / stop recommendation.
+
+The report is not a substitute for enforcement. It is the audit surface that makes runtime authority visible enough to reason about.
+
 ## Bootstrap Exceptions
 
 Bootstrapping a new canonical permission policy may require a one-time local seed. That is allowed only when:

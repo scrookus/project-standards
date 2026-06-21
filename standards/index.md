@@ -21,3 +21,7 @@
 
 - [Agent Permission Boundaries](agent-permission-boundaries.md) - user-level, project-level, and local agent permission authority rules.
 - [Knowledge Format](knowledge-format.md) - OKF-compatible metadata, indexing, linking, and log rules.
+
+## Shared Templates
+
+- [Agent Runtime Permission Report](../templates/shared/agent-runtime-permission-report.md) - inspect-only report for agent runtime permissions, authority layers, drift, and proceed/caution/stop recommendations.

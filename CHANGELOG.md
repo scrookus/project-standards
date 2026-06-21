@@ -14,6 +14,7 @@ Changed:
 - Clarified expected permission defaults: routine source/test/doc edits should be allowed for productive agent work, while permission self-modification and high-risk surfaces remain gated.
 - Added initial global deny/ask/allow posture for agent permissions across all sessions.
 - Neutralized agent-permission language so Codex-style sandbox/session approvals and Claude-style settings are governed by the same no-self-expansion rule.
+- Added `templates/shared/agent-runtime-permission-report.md` and linked it from the proposed permission-boundary standard as the inspect-only audit surface for agent runtime permissions.
 
 ## standards-v0.4 - 2026-06-20
 
