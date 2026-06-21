@@ -2,19 +2,39 @@
 
 ## Unreleased
 
+No unreleased changes.
+
+## standards-v0.5 - 2026-06-21
+
+Baseline tag: `standards-v0.5`
+
 Changed:
 
 - Clarified that product adoption agents must read published standards tags, not arbitrary local `project-standards` checkouts, and that standards drafting should happen in separate visible worktrees/branches until tagged.
-- Adopted an OKF-compatible knowledge profile in `project-standards`: shared standards now carry YAML frontmatter, `standards/index.md` supports progressive disclosure, and `PSTD-013` tracks staged backfill beyond the standards directory. OKF remains proposed for `standards-v0.5`, not mandatory for product `standards-v0.4` adoption.
+- Adopted an OKF-compatible knowledge profile in `project-standards`: shared standards now carry YAML frontmatter, `standards/index.md` supports progressive disclosure, and `PSTD-013` tracks staged backfill beyond the standards directory. OKF remains proposed for a future baseline, not mandatory for product `standards-v0.5` adoption.
 - Promoted TMTC PLT-020 migration immutability feedback into release/deploy and local-gates guidance: applied migrations are immutable, drift is repaired by forward migration, and emergency unblocks require owner, SHA, verification, and 24-hour review.
 - Required branch protection for `main`/`master` and any branch that can deploy, promote environments, publish releases, or run production-support automation; bootstrap exceptions must be tracked as temporary gaps.
 - Required GitHub Dependabot alerts for every active or production-support GitHub repo, with any inability to enable alerts tracked as an owned, reviewed exception.
-- Added proposed `standards/agent-permission-boundaries.md` for `standards-v0.5`, defining user-level, project-level, and worktree-local permission authority plus explicit permission-change sessions.
-- Clarified that tracked project permission files provide auditability, but hard prevention requires managed policy or a verified equivalent when local/user permission rules can still merge in.
-- Clarified expected permission defaults: routine source/test/doc edits should be allowed for productive agent work, while permission self-modification and high-risk surfaces remain gated.
-- Added initial global deny/ask/allow posture for agent permissions across all sessions.
-- Neutralized agent-permission language so Codex-style sandbox/session approvals and Claude-style settings are governed by the same no-self-expansion rule.
-- Added `templates/shared/agent-runtime-permission-report.md` and linked it from the proposed permission-boundary standard as the inspect-only audit surface for agent runtime permissions.
+- Promoted `standards/agent-permission-boundaries.md` to the `standards-v0.5` baseline.
+- Added `standards/agent-permission-user-baseline.md` as the concrete cross-project deny/ask/allow posture for coding-agent runtime permissions.
+- Added `docs/cross-project-standards/standards-v0.5-adoption-prompt.md` with a staged adoption path: inventory/report first, then empirical verification, drift detection, deny/ask policy, and local approval cleanup as explicit permission-change sessions.
+- Activated `templates/shared/agent-runtime-permission-report.md` as the inspect-only audit surface for runtime permissions.
+- Clarified that hard prevention requires managed policy or verified runtime semantics; otherwise products must describe detection and review controls honestly.
+- Kept `standards/knowledge-format.md` as a future proposed baseline rather than a `standards-v0.5` product obligation.
+- Tightened the `standards-v0.4` adoption prompt to require prior `standards-v0.3` adoption, exclude permission-boundary changes, preserve CTO queue authority, and report local verification.
+- Incorporated Connections `standards-v0.4` adoption feedback: clarified adoption status axes, explicit closure-lesson dispositions including explicit nil, visible worktree layout boundaries, push-equals-deploy versus push-then-deploy, carryover task labels, and prospective adoption transition debt.
+- Incorporated PickSix adoption/version feedback: adoption status now names branch/ref, commit or check time, adopted version, upstream-current state, and conformance debt; broader version-decision lessons were recorded as upstream candidates.
+
+## standards-v0.4.1 - 2026-06-21
+
+Baseline tag: `standards-v0.4.1`
+
+Changed:
+
+- Clarified `standards-v0.4` adoption status reporting after Connections and PickSix adoption feedback: adopters should name branch/ref checked, commit or check time, adopted version, upstream-current state, and conformance debt.
+- Clarified branch/worktree guidance for visible worktree layouts, tool-specific path boundaries, closure-lesson destinations including explicit nil, prospective transition debt, carryover task labels, and push-equals-deploy versus push-then-deploy products.
+- Tightened the `standards-v0.4` adoption prompt to require prior `standards-v0.3` adoption, exclude then-proposed `standards-v0.5` permission changes, preserve CTO queue authority, and report local verification.
+- Recorded Connections `standards-v0.4` feedback and PickSix adoption/version feedback in the upstream candidate register.
 
 ## standards-v0.4 - 2026-06-20
 

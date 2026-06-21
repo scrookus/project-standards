@@ -4,7 +4,7 @@ title: Branch And Worktree Standard
 description: Branch, worktree, local Git communication, and cleanup rules for agent-safe parallel work.
 resource: standards/branch-and-worktree.md
 tags: [standards, branch, and, worktree]
-timestamp: 2026-06-20T00:00:00-07:00
+timestamp: 2026-06-21T00:00:00-07:00
 standards_version: standards-v0.4
 status: baseline
 owner: PLT
@@ -65,7 +65,9 @@ git worktree add ../<repo>-<role>-<task> -b <role>/<task>
 2. Dedicated worktrees parent next to a bare repo: use `<repo>.git/` as the bare repo and `<repo>/<worktree-name>/` as the worktree parent. This is acceptable when the product documents the parent path clearly.
 3. In-repo `worktrees/` directory: use only when the product documents why nesting is worth the tradeoff and how agents avoid editing the wrong checkout.
 
-Do not bury worktrees under tool-specific or hidden directories such as `.claude/worktrees/`. Hidden nested worktrees make cleanup, path references, editor search, and agent ownership harder to inspect.
+Worktree directories should normally be siblings of the main checkout or bare repo. Nesting worktrees inside a repo is allowed only when the product documents the path in its branch/worktree overlay and explains how agents avoid editing the wrong checkout.
+
+Do not bury worktrees under tool-specific or hidden directories such as `.claude/worktrees/`. The concern is hidden or surprising worktree placement, not ordinary hidden support directories such as hook folders. Visible tool-named worktree parents are allowed only when documented in the product overlay.
 
 If a product already has hidden/tool-specific worktrees, agents must treat that as migration work: finish or hand off the active task, remove stale worktrees, and move future work to a visible layout. Do not create new hidden/tool-specific worktrees.
 
@@ -117,6 +119,11 @@ Avoid pushing every checkpoint commit. Frequent origin pushes create noisy remot
 
 If an agent needs to share unfinished work without opening a PR, prefer the product's documented local handoff or queue mechanism. If a remote push is still needed for handoff, state the reason and whether CI/deploy side effects are expected.
 
+Products should document whether pushing and deployment are separate actions:
+
+- Push-equals-deploy: a push to a protected branch is the production or preview deploy gesture, such as auto-deploy hosting. Local-first communication applies to in-progress and feature branches; protected-branch pushes must follow the product's release/deploy rules.
+- Push-then-deploy: a push publishes code for review, CI, or handoff, while a separate release, workflow, or promotion action deploys it. Both push policy and deploy policy apply.
+
 ## Direct-To-Main Carve-Outs
 
 Direct-to-main is allowed only when explicitly documented by the product and one of these applies:
@@ -148,11 +155,21 @@ Before ending a worktree-based task, the responsible agent must complete a closu
 - Remove the stale worktree and local branch after merge or abandonment, unless the product documents a retention reason.
 - State any retained worktree, branch, or remote branch and who owns the next action.
 
+Each closure pass should make an explicit durable disposition. Valid destinations include a product lane feedback file or runbook update, an upstream-candidate entry, a task queue follow-up, a worktree/branch disposition note, or an explicit "no reusable lesson" note. Silent omission is not enough because it is indistinguishable from a skipped closure check.
+
 Durable closure documentation belongs in the product's branch/worktree overlay for policy, the task queue or coordination surface for follow-up work, and the adoption ledger for standards exceptions. Ephemeral session summaries are not enough for reusable lessons or retained-worktree ownership.
 
 Worktree cleanup is part of task closure. Agents must not leave stale worktrees behind silently. If removal is unsafe because there are unmerged commits, dirty files, running services, or another agent may own the checkout, stop and report the blocker instead of deleting it.
 
 After the PR merges, clean up remote branches and run or request the product's documented worktree prune/list check as part of the same closure pass unless the product has a stronger branch-retention rule.
+
+## Adoption Transition
+
+New closure and worktree-layout rules apply prospectively after adoption. Pre-existing worktrees, branches, and queued tasks do not block adoption solely because they predate the baseline.
+
+At adoption time, products must identify visible conformance debt. Stale or hidden worktrees, retained branches, and active tasks that need the new closure discipline should be queued with an owner and next action rather than silently grandfathered.
+
+Carryover tasks may keep their origin-version label, such as a `standards-v0.3` follow-up, when the task's scope is still accurate. If a newer baseline changes the task's scope, risk, or review lane, resurface it for a re-scope decision instead of merely relabeling it.
 
 ## Queue And Ownership
 

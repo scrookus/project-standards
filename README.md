@@ -45,11 +45,13 @@ git pull
 
 ### Shared standards baseline
 
-Current baseline: `standards-v0.4`
+Current baseline: `standards-v0.5`
 
 | Standard | File |
 |---|---|
 | Agent contract | `standards/agent-contract.md` |
+| Agent permission boundaries | `standards/agent-permission-boundaries.md` |
+| Agent permission user baseline | `standards/agent-permission-user-baseline.md` |
 | Documentation governance | `standards/documentation-governance.md` |
 | Review routing | `standards/review-routing.md` |
 | Security baseline | `standards/security-baseline.md` |
@@ -64,16 +66,17 @@ Current baseline: `standards-v0.4`
 | Repository controls | `standards/repository-controls.md` |
 | Dev tooling and package versioning | `standards/dev-tooling-and-package-versioning.md` |
 
+Shared template: `templates/shared/agent-runtime-permission-report.md` provides an inspect-only report for agent runtime permission state, including Codex-style sandbox/session approvals and Claude-style settings.
+
+Product adoption prompt: `docs/cross-project-standards/standards-v0.5-adoption-prompt.md`.
+
 Proposed next-baseline standards are not adopted obligations until the CTO approves a version bump. Current proposals:
 
-- `standards/agent-permission-boundaries.md` for proposed `standards-v0.5` user-level, project-level, and worktree-local agent permission authority. Product repos are not required to adopt it for `standards-v0.4`, but permission policy changes should already be treated as SEC/PLT-sensitive work.
-- `standards/knowledge-format.md` for proposed `standards-v0.5` OKF-compatible Markdown/frontmatter metadata, indexes, logs, and linkable agent-readable knowledge. `project-standards/` is piloting this profile, but product repos are not required to adopt it for `standards-v0.4`.
-
-Shared template: `templates/shared/agent-runtime-permission-report.md` provides an inspect-only report for agent runtime permission state, including Codex-style sandbox/session approvals and Claude-style settings.
+- `standards/knowledge-format.md` for a future OKF-compatible Markdown/frontmatter metadata, indexes, logs, and linkable agent-readable knowledge baseline. `project-standards/` is piloting this profile, but product repos are not required to adopt it for `standards-v0.5`.
 
 Governance is recorded in `docs/adr/0001-shared-standards-home.md`. Changes are tracked in `CHANGELOG.md`. Git baseline tags start at `standards-v0.3` and continue forward.
 
-Product adoption agents should read the published tag for the baseline they are adopting, such as `standards-v0.4`, rather than an arbitrary local checkout of `project-standards`. Standards drafting should happen on a separate visible worktree/branch until a new baseline is locked, tagged, and pushed.
+Product adoption agents should read the published tag for the baseline they are adopting, such as `standards-v0.5`, rather than an arbitrary local checkout of `project-standards`. Standards drafting should happen on a separate visible worktree/branch until a new baseline is locked, tagged, and pushed.
 
 This repo adopts the baseline it publishes. Its local adoption record is `docs/ops/standards-adoption.md`; agents should read `AGENTS.md` before changing shared standards or templates.
 
@@ -91,7 +94,7 @@ Projects use a two-layer model:
 To adopt the baseline:
 
 1. Copy `templates/shared/standards-adoption.md` to the product repo as `docs/ops/standards-adoption.md`.
-2. Record the adopted baseline version, local overlays, deferred standards, known exceptions, and next convergence task.
+2. Record the branch/ref checked, adopted baseline version, upstream-current state, conformance debt, local overlays, deferred standards, known exceptions, and next convergence task.
 3. Update local `AGENTS.md`, review routing, branch/worktree rules, context/read-tier notes, cost/subscription notes, security docs, local gates, dependency-risk policy, and release/deploy docs to point to the shared baseline and preserve stack-specific rules.
 4. Route adoption review through DOC primary, with ARC for architecture language, CTO for cost/subscription posture, PLT for gates and deploy language, and SEC for security, dependency, and disclosure language.
 

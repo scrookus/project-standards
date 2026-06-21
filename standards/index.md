@@ -3,6 +3,8 @@
 ## Baseline Standards
 
 - [Agent Contract](agent-contract.md) - first-read operating contract requirements for agents and reviewers.
+- [Agent Permission Boundaries](agent-permission-boundaries.md) - user-level, project-level, and local agent permission authority rules.
+- [Agent Permission User Baseline](agent-permission-user-baseline.md) - cross-project user-level deny, ask, and allow posture for coding-agent runtime permissions.
 - [Branch And Worktree](branch-and-worktree.md) - branch isolation, visible worktree layout, local Git communication, and cleanup.
 - [Context Budget](context-budget.md) - context size, read-tier, and startup-load rules.
 - [Cost And Subscriptions](cost-and-subscriptions.md) - cost, subscription, quota, and paid-vendor posture.
@@ -19,7 +21,6 @@
 
 ## Proposed Standards
 
-- [Agent Permission Boundaries](agent-permission-boundaries.md) - user-level, project-level, and local agent permission authority rules.
 - [Knowledge Format](knowledge-format.md) - OKF-compatible metadata, indexing, linking, and log rules.
 
 ## Shared Templates

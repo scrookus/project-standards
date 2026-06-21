@@ -75,7 +75,7 @@ Agents must not infer queue-writing or approval authority from a branch name, fi
 
 When role authority is ambiguous, agents may inspect and summarize, but should not mutate CTO-owned queue state, version decisions, deploy approvals, or cost/subscription posture.
 
-The same rule applies to permission authority. Agents must not infer permission-change authority from a prompt approval, local settings drift, or the need to unblock a task. User-level, project-level, and worktree-local permission rules are governed by `standards/agent-permission-boundaries.md` when adopted.
+The same rule applies to permission authority. Agents must not infer permission-change authority from a prompt approval, local settings drift, or the need to unblock a task. User-level, project-level, and worktree-local permission rules are governed by `standards/agent-permission-boundaries.md` and `standards/agent-permission-user-baseline.md`.
 
 ## Session Role Identity
 

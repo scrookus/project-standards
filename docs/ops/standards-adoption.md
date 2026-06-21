@@ -4,7 +4,7 @@ title: project-standards Standards Adoption
 description: Local adoption ledger for standards published by project-standards.
 resource: docs/ops/standards-adoption.md
 tags: [ops, adoption, standards]
-timestamp: 2026-06-20T00:00:00-07:00
+timestamp: 2026-06-21T00:00:00-07:00
 status: active
 owner: DOC
 okf_version: "0.1"
@@ -14,22 +14,36 @@ okf_version: "0.1"
 Status: active
 Owner: DOC
 Audience: CTO / DOC / ARC / PLT / SEC / ENG
-Last reviewed: 2026-06-17
+Last reviewed: 2026-06-21
 
 ## Adopted Baseline
 
-Baseline: standards-v0.4
-Baseline tag: standards-v0.4
-Adopted on: 2026-06-20
+Baseline: standards-v0.5
+Baseline tag: standards-v0.5
+Adoption branch/ref: main
+Adoption commit: `standards-v0.5` tag target
+Adoption checked at: 2026-06-21
+Adopted on: 2026-06-21
 Adoption owner: DOC
 
 Shared standards source: `standards/`
+
+## Adoption Status
+
+| Axis | Status | Evidence / Notes |
+|---|---|---|
+| Branch/ref checked | main at the `standards-v0.5` tag target on 2026-06-21 | `project-standards` publishes from `main`; agents must still read the published tag for product adoption. |
+| Adopted version | standards-v0.5 adopted on 2026-06-21 | Local overlays and shared standards updated for the permission-boundary baseline. |
+| Upstream-current | current | `standards-v0.5` is the current baseline once tagged and pushed. |
+| Conformance | clean for shared docs; product adoption pending | Product repos must adopt through their own ledgers and queues. |
 
 ## Local Overlays
 
 | Area | Local Doc | Owner | Notes |
 |---|---|---|---|
 | Agent contract | `AGENTS.md` | DOC | First-read rules for changing shared standards and templates. |
+| Agent permission boundaries | `standards/agent-permission-boundaries.md` | SEC | Shared permission authority, runtime drift, and permission-change-session rules. |
+| Agent permission user baseline | `standards/agent-permission-user-baseline.md` | SEC | Shared deny/ask/allow posture and detection minimum. |
 | Review routing | `docs/review/routing.md` | DOC | Routes standards changes by affected lane. |
 | Task queue | `docs/ops/task-queue.md` | CTO | Active work and product adoption tasks. |
 | Branch/worktree | `docs/ops/branch-and-worktree.md` | PLT | Anti-hijack rules for standards/template work. |
@@ -57,6 +71,6 @@ Keep this adoption ledger focused on how `project-standards/` adopts the current
 
 ## Next Convergence Task
 
-Task ID: PSTD-001
-Owner: DOC
-Next action: Run self-adoption review and commit/PR the baseline before opening adoption tasks for Connections and TMTC.
+Task ID: PSTD-016
+Owner: SEC
+Next action: Coordinate staged `standards-v0.5` product adoption after the tag is published.

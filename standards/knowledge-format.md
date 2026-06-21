@@ -5,14 +5,14 @@ description: OKF-compatible metadata, indexing, linking, and log rules for durab
 resource: standards/knowledge-format.md
 tags: [standards, knowledge, okf, documentation, agents]
 timestamp: 2026-06-20T00:00:00-07:00
-standards_version: proposed-standards-v0.5
+standards_version: proposed-future
 status: proposed
 owner: DOC
 okf_version: "0.1"
 ---
 # Knowledge Format Standard
 
-Version: proposed-standards-v0.5
+Version: proposed-future
 Status: proposed
 Owner: DOC
 Review: DOC primary; CTO for standards governance; PLT for tooling; SEC for sensitive knowledge placement
@@ -55,7 +55,7 @@ For project standards, also include:
 
 ```yaml
 resource: standards/example.md
-standards_version: standards-v0.2 | proposed-standards-v0.5
+standards_version: standards-v0.2 | proposed-future
 status: baseline | proposed | active | superseded
 owner: ROLE
 okf_version: "0.1"

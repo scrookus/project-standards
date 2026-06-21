@@ -4,16 +4,16 @@ title: Agent Permission Boundaries Standard
 description: User-level, project-level, and local agent permission authority rules.
 resource: standards/agent-permission-boundaries.md
 tags: [standards, agent, permissions, security]
-timestamp: 2026-06-20T00:00:00-07:00
-standards_version: proposed-standards-v0.5
-status: proposed
+timestamp: 2026-06-21T00:00:00-07:00
+standards_version: standards-v0.5
+status: baseline
 owner: SEC
 okf_version: "0.1"
 ---
 # Agent Permission Boundaries Standard
 
-Version: proposed-standards-v0.5
-Status: proposed
+Version: standards-v0.5
+Status: baseline
 Owner: SEC
 Review: DOC primary; SEC for permission policy; PLT for enforcement; CTO for user-level authority
 
@@ -49,6 +49,8 @@ The user-level baseline should define permissions that apply to every project, s
 - Whether local project settings, session approvals, or approved command prefixes may add permissions, only narrow permissions, or must ask every time.
 
 The baseline may live in a user-managed config file, private shared repo, managed enterprise policy, or another operator-controlled authority. Product repos do not need to commit user-specific permissions, but they must record the expected source and whether the current project relies on it.
+
+The shared default posture is defined in `standards/agent-permission-user-baseline.md`. Products may be stricter, but must record any weaker or unenforceable posture as conformance debt or an exception.
 
 ## Productive Default Permissions
 

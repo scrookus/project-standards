@@ -1,9 +1,9 @@
 # Agent Runtime Permission Report
 
-Status: draft
+Status: active
 Owner: SEC / PLT
 Audience: CTO / SEC / PLT / DOC
-Last reviewed: {{DATE}}
+Last reviewed: 2026-06-21
 
 Use this report before sensitive work, during standards adoption, or after a permission-related incident. The default mode is inspect-only: do not change runtime permissions while filling this out.
 
