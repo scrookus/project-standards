@@ -48,6 +48,31 @@ The user-level baseline should define permissions that apply to every project, s
 
 The baseline may live in a user-managed config file, private shared repo, managed enterprise policy, or another operator-controlled authority. Product repos do not need to commit user-specific permissions, but they must record the expected source and whether the current project relies on it.
 
+## Productive Default Permissions
+
+The expected posture is not "ask before every edit." Productive agent work should allow routine repo edits when the task scope calls for them.
+
+Normal allow surfaces may include:
+
+- Product source files.
+- Tests and fixtures.
+- Documentation.
+- Styles, components, and copy.
+- Product-local examples or templates.
+- Low-risk generated files when the project documents them as safe to update.
+
+Higher-risk surfaces should remain ask, deny, or review-gated by product policy:
+
+- User-level, project-level, or local agent permission settings.
+- Secrets, `.env` files, credentials, and private keys.
+- CI, deploy, release, hook, and branch-protection configuration.
+- Package manager, dependency, lockfile, and runtime-version changes.
+- Database migrations, schema changes, IAM, RLS, or policy files.
+- Destructive Git operations, remote publication, force pushes, and repository settings.
+- Production deploys or commands that mutate production-support services.
+
+The goal is low-friction coding inside a clear task scope, not low-friction authority expansion.
+
 ## Protected Permission-Change Sessions
 
 Agents must not change user-level permissions, project-level permission policy, or permission setup scripts during ordinary product work.
@@ -63,6 +88,8 @@ Permission changes require a specific permission-change session with:
 - A rollback path or documented way to restore the previous baseline.
 
 If a session is not explicitly a permission-change session, the agent may inspect and report permission drift, but must not edit the permission authority.
+
+Do not bundle ordinary code-edit approval with permission self-modification. A prompt that offers "approve this edit and allow the agent to edit its own settings" should be treated as permission-change work, not as routine code work.
 
 ## Local Settings And Drift
 
@@ -104,6 +131,8 @@ Where the tool supports separate rule buckets, prefer an explicit model:
 Allow-only policies are rarely enough for high-trust agent workflows because they do not document hard refusal surfaces or human-attestation surfaces.
 
 Broad execution surfaces such as shell wrappers, interpreters, package scripts, network tools, credential commands, Git history rewrites, deploy commands, database mutation, and repo-setting changes should be deny or ask by default unless a product records a narrower reviewed exception.
+
+Routine file-edit permissions are different from broad execution permissions. A product may allow source, test, and doc edits while still denying permission-file edits, destructive commands, deploys, and tool wrappers.
 
 ## Empirical Verification
 

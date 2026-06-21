@@ -11,6 +11,7 @@ Changed:
 - Required GitHub Dependabot alerts for every active or production-support GitHub repo, with any inability to enable alerts tracked as an owned, reviewed exception.
 - Added proposed `standards/agent-permission-boundaries.md` for `standards-v0.5`, defining user-level, project-level, and worktree-local permission authority plus explicit permission-change sessions.
 - Clarified that tracked project permission files provide auditability, but hard prevention requires managed policy or a verified equivalent when local/user permission rules can still merge in.
+- Clarified expected permission defaults: routine source/test/doc edits should be allowed for productive agent work, while permission self-modification and high-risk surfaces remain gated.
 
 ## standards-v0.4 - 2026-06-20
 
