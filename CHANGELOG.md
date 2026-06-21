@@ -6,6 +6,17 @@ Changed:
 
 - Adopted an OKF-compatible knowledge profile in `project-standards`: shared standards now carry YAML frontmatter, `standards/index.md` supports progressive disclosure, and `PSTD-013` tracks staged backfill beyond the standards directory. OKF remains proposed for `standards-v0.5`, not mandatory for product `standards-v0.4` adoption.
 
+## standards-v0.4.1 - 2026-06-21
+
+Baseline tag: `standards-v0.4.1`
+
+Changed:
+
+- Clarified `standards-v0.4` adoption status reporting after Connections and PickSix adoption feedback: adopters should name branch/ref checked, commit or check time, adopted version, upstream-current state, and conformance debt.
+- Clarified branch/worktree guidance for visible worktree layouts, tool-specific path boundaries, closure-lesson destinations including explicit nil, prospective transition debt, carryover task labels, and push-equals-deploy versus push-then-deploy products.
+- Tightened the `standards-v0.4` adoption prompt to require prior `standards-v0.3` adoption, exclude proposed `standards-v0.5` permission changes, preserve CTO queue authority, and report local verification.
+- Recorded Connections `standards-v0.4` feedback and PickSix adoption/version feedback in the upstream candidate register.
+
 ## standards-v0.4 - 2026-06-20
 
 Baseline tag: `standards-v0.4`

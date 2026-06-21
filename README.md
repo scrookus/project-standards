@@ -45,7 +45,7 @@ git pull
 
 ### Shared standards baseline
 
-Current baseline: `standards-v0.4`
+Current baseline: `standards-v0.4.1`
 
 | Standard | File |
 |---|---|
@@ -86,7 +86,7 @@ Projects use a two-layer model:
 To adopt the baseline:
 
 1. Copy `templates/shared/standards-adoption.md` to the product repo as `docs/ops/standards-adoption.md`.
-2. Record the adopted baseline version, local overlays, deferred standards, known exceptions, and next convergence task.
+2. Record the branch/ref checked, adopted baseline version, upstream-current state, conformance debt, local overlays, deferred standards, known exceptions, and next convergence task.
 3. Update local `AGENTS.md`, review routing, branch/worktree rules, context/read-tier notes, cost/subscription notes, security docs, local gates, dependency-risk policy, and release/deploy docs to point to the shared baseline and preserve stack-specific rules.
 4. Route adoption review through DOC primary, with ARC for architecture language, CTO for cost/subscription posture, PLT for gates and deploy language, and SEC for security, dependency, and disclosure language.
 

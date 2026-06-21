@@ -7,11 +7,26 @@ Last reviewed: YYYY-MM-DD
 
 ## Adopted Baseline
 
-Baseline: standards-v0.2
+Baseline: standards-vX.Y
+Baseline tag: standards-vX.Y
+Adoption branch/ref: TODO
+Adoption commit: TODO
+Adoption checked at: YYYY-MM-DD
 Adopted on: YYYY-MM-DD
 Adoption owner: TODO
 
-Shared standards source: `project-standards/standards/`
+Shared standards source: `project-standards/standards/` at the published baseline tag.
+
+## Adoption Status
+
+Use this section to distinguish policy adoption from freshness and conformance debt. Adoption status is branch/ref-specific: do not answer "what version are we on?" without naming the branch or ref and when it was checked.
+
+| Axis | Status | Evidence / Notes |
+|---|---|---|
+| Branch/ref checked | TODO: branch/ref at commit SHA on YYYY-MM-DD | Adoption state is not repo-wide when branches diverge. |
+| Adopted version | TODO: standards-vX.Y adopted on YYYY-MM-DD | Baseline file updated and local overlays written on the checked branch/ref. |
+| Upstream-current | TODO: current / behind / ahead / unknown | Compare the adopted tag with the latest published `project-standards` tag before claiming current. |
+| Conformance | TODO: clean / debt queued / exception recorded | Name any pre-existing worktrees, stale queues, missing closure passes, stale pointers, or other adoption debt. |
 
 ## Local Overlays
 
@@ -74,3 +89,7 @@ Document local stack rules without promoting them to cross-project requirements.
 Task ID: TODO
 Owner: TODO
 Next action: TODO
+
+## Carryover Tasks
+
+Tasks opened under an older standards version may keep their origin-version label when the scope is still accurate. If a newer baseline changes the task's scope, risk, or review lane, resurface the task for a re-scope decision and record the outcome here or in the task queue.

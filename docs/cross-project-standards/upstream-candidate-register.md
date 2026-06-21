@@ -3,7 +3,7 @@
 Status: active
 Owner: DOC
 Audience: CTO / DOC / ARC / PLT / SEC / ENG / QAT / UXD
-Last reviewed: 2026-06-18
+Last reviewed: 2026-06-21
 
 ## Purpose
 
@@ -29,6 +29,8 @@ Do not copy product docs wholesale into the shared baseline. Promote reusable pr
 | Connections standards-v0.3 adoption feedback | Inventory and enumeration tables should be written while reading current source files, not from memory of an earlier scan. | Connections workflow names, Deno runtime row, and local CI file paths. | DOC / PLT / ENG | `docs/cross-project-standards/standards-v0.3-adoption-prompt.md` |
 | Connections standards-v0.3 adoption feedback | Shared review-routing instructions should allow product-local role mappings when a project absorbs DOC, PLT, or other shared lanes into another role. | Connections role taxonomy and mapping table. | DOC / CTO | `docs/cross-project-standards/standards-v0.3-adoption-prompt.md` |
 | Connections standards-v0.3 adoption feedback | Dependabot/Renovate policy needs one canonical overlay owner to avoid duplicated repository-controls and dev-tooling text. | Connections local cross-links and product-specific automation details. | PLT / SEC / ENG | `standards/dev-tooling-and-package-versioning.md` and `standards/repository-controls.md` |
+| Connections `standards-v0.4` adoption feedback from PR #616 | Adoption status should distinguish adopted version, upstream-current state, and conformance debt; worktree closure needs explicit durable dispositions including explicit nil; worktree layout, push-equals-deploy, carryover-task, and adoption-transition edge cases should be named. | Connections rule numbers, Vercel-specific local wording, CTO task IDs, and product-local feedback paths. | DOC / PLT / CTO | `standards/branch-and-worktree.md` and `templates/shared/standards-adoption.md` |
+| PickSix adoption/version feedback | Adoption and version state must name branch/ref, commit or check time, adopted version, upstream-current state, and conformance debt; stale pointers between agent contracts, adoption ledgers, and spine docs should be visible debt. | PickSix branch names, PR numbers, exact dependency counts, AWS/Amplify local details, and product task IDs. | DOC / PLT / CTO | `templates/shared/standards-adoption.md` and `docs/cross-project-standards/standards-v0.4-adoption-prompt.md` |
 
 ## Candidates
 
@@ -54,6 +56,7 @@ Do not copy product docs wholesale into the shared baseline. Promote reusable pr
 | Connections post-adoption feedback | Upstream candidates and deferred standards should have queue-backed triggers, not ledger-only aspirations. | Connections task IDs, local deferred-standard names, and project-specific triggers. | CTO / DOC | Candidate for documentation-governance/task-queue refinement. |
 | Connections post-adoption feedback | When handing facts to a reviewing sub-agent, mark unverified claims as hypotheses and ask the lane to verify against current state. | Connections migration numbers, private memory references, and lane-specific prompt wording. | REV / DOC | Candidate for review-routing or agent-session-rituals guidance. |
 | Connections standards-v0.3 adoption feedback | Fresh-context lane review can catch content-substance gaps in CTO-led docs work that touches another lane's surface. | Connections SEC sub-agent run, token/session details, and local Rule 18 implementation. | REV / DOC / SEC | Candidate for review-routing or agent-session-rituals guidance. |
+| PickSix adoption/version feedback | Versioned operating decisions should record source of truth, branch scope, lockstep versus independent surfaces, migration prerequisites, sweep cadence, and review lanes instead of relying on convention drift. | PickSix exact tool choices, alert counts, PR numbers, and product sequencing details. | DOC / PLT / SEC / CTO / QAT | Candidate for documentation-governance, dev-tooling/package-versioning, and review-routing refinement. |
 
 ## Deferred Or Rejected
 
