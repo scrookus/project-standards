@@ -73,6 +73,38 @@ Higher-risk surfaces should remain ask, deny, or review-gated by product policy:
 
 The goal is low-friction coding inside a clear task scope, not low-friction authority expansion.
 
+## Global Permission Posture
+
+The user-level baseline should start from three buckets: deny, ask, and allow. Products may be stricter locally, but should not silently weaken the global posture.
+
+Global deny should cover actions that change authority, expose secrets, rewrite history, administer accounts, mutate production, or bypass the permission model:
+
+- Editing user-level, project-level, managed, or local agent permission settings outside a permission-change session.
+- Reading, printing, exporting, or exfiltrating secrets, tokens, private keys, credential files, or cloud/vendor auth tokens.
+- Destructive Git operations such as hard reset, clean, force push, deleting branches/tags/remotes, changing remotes, rewriting refs, or rewriting history.
+- Repository, GitHub, cloud, or vendor administration, including branch protection, repo settings, secrets, variables, account auth, or repo deletion.
+- Production mutation, including production deploys, production database pushes/pulls, production secret updates, destructive SQL, or commands that mutate production-support services.
+- Generic escape hatches that can bypass review, such as unrestricted shell wrappers, `sudo`, `eval`, `exec`, pipe-to-shell installers, remote shell tools, and raw network/socket tools.
+
+Global ask should cover risky but legitimate work that may be needed in the right session:
+
+- Package installs, uninstalls, dependency upgrades, lockfile updates, runtime-version changes, and package publication.
+- Migrations, schema changes, IAM/RLS/policy changes, and database mutation against non-production shared environments.
+- CI, deploy, release, hook, branch-protection, and repository-control file changes.
+- GitHub CLI, cloud CLI, Supabase, AWS, Vercel, or hosting commands that write state.
+- `npm run` or equivalent scripts that deploy, migrate, publish, change secrets, or mutate services.
+- File deletion outside documented generated-output cleanup.
+- Web or network fetches outside documented research or source-verification tasks.
+
+Normal allow should cover task-scoped low-risk work:
+
+- Editing product source, tests, fixtures, docs, styles, components, copy, examples, and approved templates.
+- Running local read-only inspection commands.
+- Running documented local tests, builds, typechecks, linters, and architecture checks.
+- Running non-destructive Git status, diff, log, show, and branch inspection.
+
+The line is authority and blast radius. Agents may freely edit task-scoped product files, but may not alter their own permission boundary, credentials, repo controls, or production-affecting surfaces outside an explicit permission-change or release/admin session.
+
 ## Protected Permission-Change Sessions
 
 Agents must not change user-level permissions, project-level permission policy, or permission setup scripts during ordinary product work.

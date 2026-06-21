@@ -12,6 +12,7 @@ Changed:
 - Added proposed `standards/agent-permission-boundaries.md` for `standards-v0.5`, defining user-level, project-level, and worktree-local permission authority plus explicit permission-change sessions.
 - Clarified that tracked project permission files provide auditability, but hard prevention requires managed policy or a verified equivalent when local/user permission rules can still merge in.
 - Clarified expected permission defaults: routine source/test/doc edits should be allowed for productive agent work, while permission self-modification and high-risk surfaces remain gated.
+- Added initial global deny/ask/allow posture for agent permissions across all sessions.
 
 ## standards-v0.4 - 2026-06-20
 
