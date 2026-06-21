@@ -13,6 +13,7 @@ Changed:
 - Clarified that tracked project permission files provide auditability, but hard prevention requires managed policy or a verified equivalent when local/user permission rules can still merge in.
 - Clarified expected permission defaults: routine source/test/doc edits should be allowed for productive agent work, while permission self-modification and high-risk surfaces remain gated.
 - Added initial global deny/ask/allow posture for agent permissions across all sessions.
+- Neutralized agent-permission language so Codex-style sandbox/session approvals and Claude-style settings are governed by the same no-self-expansion rule.
 
 ## standards-v0.4 - 2026-06-20
 

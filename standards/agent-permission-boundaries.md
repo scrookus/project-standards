@@ -19,13 +19,15 @@ Review: DOC primary; SEC for permission policy; PLT for enforcement; CTO for use
 
 ## Requirement
 
-Projects that use coding agents with tool permissions must document where permission authority lives and must prevent silent expansion of agent authority.
+Projects that use coding agents with tool permissions must document where runtime permission authority lives and must prevent silent expansion of agent authority.
 
-Permission policy is a security boundary. It is not a convenience setting.
+Agent runtime permission policy is a security boundary. It is not a convenience setting.
+
+This standard applies equally to every agent runtime. No agent gets a trust exemption because its permission mechanism is different.
 
 ## Authority Layers
 
-Each product must classify agent permission settings into these layers:
+Each product must classify agent runtime permission state into these layers:
 
 - User-level baseline: permissions, denials, and approval posture that apply across all projects for the operator.
 - Project-level policy: tracked repo policy that narrows, explains, or adds reviewed project-specific grants.
@@ -33,7 +35,7 @@ Each product must classify agent permission settings into these layers:
 
 The user-level baseline is the highest authority for cross-project posture. Project-level policy may add project-specific rules only through the product's documented review path. Worktree-local drift is never canonical.
 
-Tool precedence must be verified locally. Some tools treat local project settings as higher precedence than shared project settings, and some merge permission arrays across scopes instead of replacing them. In that shape, a tracked project file provides reviewability but does not by itself prevent local or user settings from adding rules.
+Tool precedence must be verified locally. Some tools treat local project settings as higher precedence than shared project settings, some merge permission arrays across scopes instead of replacing them, and some store approvals as app/session state rather than project files. In those shapes, a tracked project file provides reviewability but does not by itself prevent local, user, or session state from adding rules.
 
 ## User-Level Baseline
 
@@ -44,7 +46,7 @@ The user-level baseline should define permissions that apply to every project, s
 - Git mutation posture.
 - Package manager and script execution posture.
 - Secret, token, and credential handling posture.
-- Whether local project settings may add permissions, only narrow permissions, or must ask every time.
+- Whether local project settings, session approvals, or approved command prefixes may add permissions, only narrow permissions, or must ask every time.
 
 The baseline may live in a user-managed config file, private shared repo, managed enterprise policy, or another operator-controlled authority. Product repos do not need to commit user-specific permissions, but they must record the expected source and whether the current project relies on it.
 
@@ -63,7 +65,7 @@ Normal allow surfaces may include:
 
 Higher-risk surfaces should remain ask, deny, or review-gated by product policy:
 
-- User-level, project-level, or local agent permission settings.
+- User-level, project-level, session-level, or local agent permission settings.
 - Secrets, `.env` files, credentials, and private keys.
 - CI, deploy, release, hook, and branch-protection configuration.
 - Package manager, dependency, lockfile, and runtime-version changes.
@@ -79,7 +81,7 @@ The user-level baseline should start from three buckets: deny, ask, and allow. P
 
 Global deny should cover actions that change authority, expose secrets, rewrite history, administer accounts, mutate production, or bypass the permission model:
 
-- Editing user-level, project-level, managed, or local agent permission settings outside a permission-change session.
+- Editing user-level, project-level, managed, session-level, or local agent permission settings outside a permission-change session.
 - Reading, printing, exporting, or exfiltrating secrets, tokens, private keys, credential files, or cloud/vendor auth tokens.
 - Destructive Git operations such as hard reset, clean, force push, deleting branches/tags/remotes, changing remotes, rewriting refs, or rewriting history.
 - Repository, GitHub, cloud, or vendor administration, including branch protection, repo settings, secrets, variables, account auth, or repo deletion.
@@ -107,7 +109,7 @@ The line is authority and blast radius. Agents may freely edit task-scoped produ
 
 ## Protected Permission-Change Sessions
 
-Agents must not change user-level permissions, project-level permission policy, or permission setup scripts during ordinary product work.
+Agents must not change user-level permissions, project-level permission policy, session approval posture, approved command prefixes, or permission setup scripts during ordinary product work.
 
 Permission changes require a specific permission-change session with:
 
@@ -121,17 +123,17 @@ Permission changes require a specific permission-change session with:
 
 If a session is not explicitly a permission-change session, the agent may inspect and report permission drift, but must not edit the permission authority.
 
-Do not bundle ordinary code-edit approval with permission self-modification. A prompt that offers "approve this edit and allow the agent to edit its own settings" should be treated as permission-change work, not as routine code work.
+Do not bundle ordinary code-edit approval with permission self-modification. A prompt that offers "approve this edit and broaden this agent's future permissions" should be treated as permission-change work, not as routine code work.
 
 ## Local Settings And Drift
 
-Local files such as `.local` settings, machine preferences, prompt-approval caches, and worktree-local permission files are private drift unless the project documents a safe canonical mechanism.
+Local files and app state such as `.local` settings, machine preferences, prompt-approval caches, approved command prefixes, session permissions, and worktree-local permission files are private drift unless the project documents a safe canonical mechanism.
 
 Products should prevent local drift from silently weakening the baseline where the tool supports it. Acceptable controls include:
 
 - Managed settings that disallow local overrides.
 - A tracked project policy that denies edits to local permission files by agents.
-- A setup check that reports local permission drift at session start.
+- A setup check that reports local or session permission drift at session start.
 - A local gate or meta-test that compares canonical policy with generated or local mirrors.
 - A documented manual check before permission-sensitive work.
 
@@ -145,7 +147,7 @@ Project overlays must state:
 
 - The canonical project permission policy path, if any.
 - The user-level baseline or authority the project assumes.
-- Which permission files are tracked, private, generated, or managed outside the repo.
+- Which permission files, app settings, approved command prefixes, sandbox rules, and session approvals are tracked, private, generated, or managed outside the repo.
 - Who may change each authority layer.
 - Which review lanes apply to permission, tool-config, hook, package-script, CI, and deploy-setting changes.
 - How to verify that local settings cannot silently override the intended posture.
@@ -176,7 +178,7 @@ At minimum, products should verify:
 - Rule precedence across deny, ask, allow, unmatched, and inherited settings.
 - Pattern or glob semantics, including whether broad rules override narrow rules.
 - Whether environment-variable prefixes, wrappers, shell compounds, scripts, aliases, or absolute paths change matching behavior.
-- Whether local settings can expand, narrow, or override tracked or managed settings.
+- Whether local settings, app state, or session approvals can expand, narrow, or override tracked or managed settings.
 - Whether the documented schema keys are valid for the installed tool version.
 
 Record results in the product overlay, ADR, runbook, or task closure notes before treating the policy as enforceable.
@@ -194,10 +196,10 @@ Bootstrap exceptions are not a reusable pattern.
 
 ## Overlay Examples
 
-- PickSix: document whether backend and frontend agents share the same user-level permission baseline and whether AWS/CDK, Amplify, and deploy commands are ask-only or denied by default.
-- Connections: document how role launchers, local memory, MCP/content tooling, package publication, and Supabase commands interact with the user-level permission baseline.
+- PickSix: document whether backend and frontend agents share the same user-level permission baseline and whether AWS/CDK, Amplify, and deploy commands are ask-only or denied by default. Include Codex-style writable roots and approved command prefixes if Codex agents work there.
+- Connections: document how role launchers, local memory, MCP/content tooling, package publication, and Supabase commands interact with the user-level permission baseline. Include app/session approvals and sandbox posture for every agent runtime in use.
 - TMTC: document the tracked agent permission policy, local drift posture, SEC/PLT review route, and empirical permission tests as part of PLT-030 or its successor.
 
 ## Rule
 
-No agent may silently expand its own authority. Cross-project user permissions are changed only in an explicit permission-change session, and project-local permission policy changes must be reviewable like other security-sensitive code.
+No agent may silently expand its own authority. Cross-project user permissions, app-level approvals, approved command prefixes, and project-local permission policy are changed only in an explicit permission-change session, and those changes must be reviewable like other security-sensitive code.
