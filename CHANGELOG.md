@@ -4,6 +4,22 @@
 
 No unreleased changes.
 
+## standards-v0.5.1 - 2026-06-21
+
+Baseline tag: `standards-v0.5.1`
+
+Changed:
+
+- Clarified agent permission guidance after Connections v0.5 hardening feedback: permission-authority files must be protected by path and write capability across tools, not only by denying a single editor surface.
+- Clarified that agent runtime settings express policy but hard containment depends on execution isolation and brokered authority for privileged actions.
+- Clarified that permission verification must use sacrificial targets or restore harnesses; write-capable probes against live permission-authority files are not inspect-only.
+- Added `scripts/generate-agent-permission-denies.mjs` to generate broad path/write-surface deny entries from protected permission-authority paths.
+- Formalized v0.5 permission placement for adopters: cross-project rules in managed/user baseline, product workflow in project overlays, and role/subagent behavior in tracked role instructions with artifact handoff for ask-gated remote actions.
+- Clarified that sandbox configuration is a deferred/pilot enforcement layer until routine Git, GitHub CLI, package, test, and temporary-file workflows are verified or brokered.
+- Added a trusted local-secret bootstrap pattern: agents must not read, print, or hand-copy `.env*` files between worktrees; products should provide an ask-gated script or gateway that injects required local secrets without exposing values.
+- Added `scripts/bootstrap-worktree-secret-file.sh` as a reference script for copying secret-bearing local files into worktrees without printing contents and only when the destination is ignored and untracked.
+- Tightened v0.5 adopter instructions: permission reports must recount live allow/ask/deny arrays, risky Bash ask rules should use wrapper-aware substring patterns, routine allow rules should stay narrow, and long PR reviews/comments should be posted from body-file artifacts rather than inline shell bodies.
+
 ## standards-v0.5 - 2026-06-21
 
 Baseline tag: `standards-v0.5`

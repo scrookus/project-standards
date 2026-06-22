@@ -28,8 +28,10 @@ Use this report before sensitive work, during standards adoption, or after a per
 | Approved command prefixes / allowlist | TODO | TODO | TODO | Include Codex-style approved prefixes or Claude-style allow rules. |
 | Ask-gated commands / capabilities | TODO | TODO | TODO | Include deploy, package, cloud, GitHub, DB, or network prompts. |
 | Denied commands / capabilities | TODO | TODO | TODO | Include destructive Git, secrets, prod mutation, and escape hatches. |
+| Permission rule counts | TODO | TODO | TODO | Recount live allow/ask/deny arrays with `jq` or equivalent; state layer and source file. |
 | Agent settings files | TODO | TODO | TODO | Include user, project, managed, local, and session-level settings. |
 | Secrets / credentials access | TODO | TODO | TODO | Do not print secrets. Report only access posture and storage class. |
+| Worktree-local secret bootstrap | TODO | TODO | TODO | Note how `.env*` or credential files are created without agent read/print/copy. |
 | Production-affecting commands | TODO | TODO | TODO | Note deploy, DB, cloud, vendor, and release commands. |
 
 ## Authority Layers
@@ -41,6 +43,22 @@ Use this report before sensitive work, during standards adoption, or after a per
 | Project-level policy | TODO | TODO | SEC / PLT | Tracked project policy or documented absence. |
 | Session approvals | TODO | TODO | User / runtime | App/session state, prompts, approved prefixes. |
 | Worktree-local drift | TODO | TODO | User / local | Local settings, prompt caches, `.local` files. |
+
+## Rule Placement
+
+| Rule Class | Location | Status | Notes |
+|---|---|---|---|
+| Cross-project floor | TODO: managed/user baseline | TODO | Bypass controls, user-settings self-protection, credentials, destructive Git, repo admin, production mutation, escape hatches. |
+| Product-local workflow | TODO: project overlay | TODO | Product secrets, hooks, package/deploy/DB commands, review-output paths, sandbox tuning. |
+| Local secret bootstrap | TODO: project script / operator path / gateway | TODO | Trusted command or manual path for `.env*` files; must not expose values to the agent. |
+| Role/subagent behavior | TODO: role prompt / tracked agent definition | TODO | Whether subagents can answer ask prompts; artifact handoff path for review findings. |
+| Gateway/operator actions | TODO | TODO | PR posting, merge, deploy, repo admin, or other privileged mutations performed outside the subagent. |
+
+## Permission Rule Counts
+
+| Layer / Source | Allow Count | Ask Count | Deny Count | Recount Command / Evidence | Notes |
+|---|---:|---:|---:|---|---|
+| TODO | TODO | TODO | TODO | TODO | Use a structured parser such as `jq`; do not hand-count. |
 
 ## Changes This Session
 
@@ -58,6 +76,9 @@ If no permissions changed, state: `No runtime permission changes made this sessi
 | Permission changes require an explicit permission-change session. | TODO | TODO |
 | Agent did not edit or broaden its own authority during ordinary work. | TODO | TODO |
 | High-risk surfaces are ask/deny/review-gated. | TODO | TODO |
+| Permission counts were recounted from live settings before review. | TODO | TODO |
+| Secret-bearing local files were not read, printed, or hand-copied by the agent. | TODO | TODO |
+| Non-interactive subagents have a handoff path instead of relying on ask prompts. | TODO | TODO |
 | Local or session drift is visible and not treated as canonical. | TODO | TODO |
 | Unknown or unverifiable permission state is named. | TODO | TODO |
 

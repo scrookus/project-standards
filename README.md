@@ -45,7 +45,7 @@ git pull
 
 ### Shared standards baseline
 
-Current baseline: `standards-v0.5`
+Current baseline: `standards-v0.5.1`
 
 | Standard | File |
 |---|---|
@@ -76,7 +76,7 @@ Proposed next-baseline standards are not adopted obligations until the CTO appro
 
 Governance is recorded in `docs/adr/0001-shared-standards-home.md`. Changes are tracked in `CHANGELOG.md`. Git baseline tags start at `standards-v0.3` and continue forward.
 
-Product adoption agents should read the published tag for the baseline they are adopting, such as `standards-v0.5`, rather than an arbitrary local checkout of `project-standards`. Standards drafting should happen on a separate visible worktree/branch until a new baseline is locked, tagged, and pushed.
+Product adoption agents should read the published tag for the baseline they are adopting, such as `standards-v0.5.1`, rather than an arbitrary local checkout of `project-standards`. Standards drafting should happen on a separate visible worktree/branch until a new baseline is locked, tagged, and pushed.
 
 This repo adopts the baseline it publishes. Its local adoption record is `docs/ops/standards-adoption.md`; agents should read `AGENTS.md` before changing shared standards or templates.
 

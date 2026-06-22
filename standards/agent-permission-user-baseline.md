@@ -5,14 +5,14 @@ description: Cross-project user-level deny, ask, and allow posture for coding-ag
 resource: standards/agent-permission-user-baseline.md
 tags: [standards, agent, permissions, baseline, security]
 timestamp: 2026-06-21T00:00:00-07:00
-standards_version: standards-v0.5
+standards_version: standards-v0.5.1
 status: baseline
 owner: SEC
 okf_version: "0.1"
 ---
 # Agent Permission User Baseline Standard
 
-Version: standards-v0.5
+Version: standards-v0.5.1
 Status: baseline
 Owner: SEC
 Review: DOC primary; SEC for permission policy; PLT for enforcement; CTO for user-level authority
@@ -32,7 +32,9 @@ The user-level baseline may be implemented through:
 - A private cross-project policy document.
 - A product overlay that records the expected user-level posture when no enforceable user-level mechanism exists.
 
-Products must not claim hard enforcement unless the runtime semantics prove it. If local settings, session approvals, or app state can add permissions below the user-level baseline, the product must describe the posture as detection and review rather than prevention.
+Products must not claim hard enforcement unless runtime semantics, managed policy, execution isolation, or brokered authority prove it. If local settings, session approvals, app state, ambient credentials, shell access, or writable host paths can add permissions below the user-level baseline, the product must describe the posture as detection and review rather than prevention.
+
+The stronger target posture is isolated ordinary work plus brokered privileged mutation: agents can edit and test product code in a constrained workspace, while repository administration, production deploys, package publication, linked database changes, cloud/IAM changes, and managed permission-baseline changes go through a reviewed gateway or operator path.
 
 ## Deny
 
@@ -41,7 +43,8 @@ The user-level baseline must deny, or record as non-overridable policy, actions 
 Default deny surfaces:
 
 - Editing user-level, managed, project-level, session-level, or local agent permission settings outside an explicit permission-change session.
-- Reading, printing, exporting, or exfiltrating secrets, tokens, private keys, credential files, cloud/vendor auth tokens, or secret-bearing local permission entries.
+- Mutating permission-authority files through any write-capable tool surface, including shell redirection, file-copy tools, formatters, interpreters, patch tools, or package scripts.
+- Reading, printing, exporting, hand-copying, or exfiltrating secrets, tokens, private keys, credential files, cloud/vendor auth tokens, `.env*` files, or secret-bearing local permission entries.
 - Destructive Git operations: hard reset, clean, force push, deleting branches/tags/remotes, changing remotes, rewriting refs, or rewriting history.
 - Repository, GitHub, cloud, hosting, or vendor administration: branch protection, repo settings, secrets, variables, account auth, billing, or repo deletion.
 - Production mutation: production deploys, production database pushes/pulls, production secret updates, destructive SQL, or commands that mutate production-support services.
@@ -64,6 +67,8 @@ Default ask surfaces:
 
 Approval for one command is not approval to broaden future runtime permissions. Persistent permission changes require a permission-change session under `standards/agent-permission-boundaries.md`.
 
+Risky Bash ask rules should be wrapper-aware. Prefer substring forms such as `Bash(*npm install*)` for high-blast-radius operations that may be invoked after `cd`, `env`, subshells, or command wrappers. Prefix-only forms are appropriate only when bypass through common shell composition is not material.
+
 ## Allow
 
 The user-level baseline should allow normal task-scoped product work so agents can remain useful without self-modifying their authority.
@@ -78,6 +83,20 @@ Default allow surfaces:
 
 Products may narrow these allows when their stack, data, or release posture requires it.
 
+Routine allow rules should stay narrow. Prefer specific prefix or exact forms for read-only commands, local checks, and known-safe scripts; do not broaden allow patterns merely to reduce prompts for commands with authority or blast radius.
+
+## Placement
+
+The user-level baseline is the cross-project floor, not the product workflow catalog.
+
+User-level or managed policy should carry controls that must apply everywhere: bypass prevention, user-settings self-protection, credential/private-key denials, destructive Git denials, repo-admin denials, production-mutation denials, escape-hatch denials, routine Git inspection allows, and cross-project ask gates for durable remote actions.
+
+Product overlays should carry product-specific paths and workflows: `.env` variants, `secrets/**`, package manifests, migrations, hooks, CI/release files, review-output directories, product sandbox rules, package publication, deploy, database, hosting, and vendor commands.
+
+Worktree-local secret bootstrap belongs in the product overlay, not in the user-level baseline. The user-level baseline should deny direct secret reads and prints; the project may define an ask-gated trusted setup command that creates required `.env*` or credential files without exposing values to the agent.
+
+Role-specific expectations should live in role prompts or tracked agent definitions. Reviewing subagents that cannot answer prompts should write findings to an allowed project review-output path and hand off ask-gated remote actions to the parent session, operator, or gateway.
+
 ## Detection Minimum
 
 If the runtime cannot enforce the baseline against lower-scope local settings or session approvals, the product must add detection and review controls before claiming v0.5 conformance.
@@ -86,6 +105,9 @@ Minimum detection controls:
 
 - A runtime permission report during adoption.
 - A product overlay that classifies user-level, managed, project-level, session-level, and local permission state.
+- A placement summary naming which rules live in user/managed settings, project policy, and role prompts.
+- A statement of whether ordinary agent work is isolated by container, VM, sandbox, or host-only convention.
+- A statement of whether privileged mutations are exposed directly to the agent or brokered through a gateway, workflow, or operator path.
 - Empirical verification of runtime precedence before relying on deny, ask, or allow rules.
 - A startup check, local gate, manual checklist, or review rule that surfaces local/session drift before permission-sensitive work.
 - Product-local follow-up tasks for broad local approvals, credential-bearing entries, or unverifiable permission state.

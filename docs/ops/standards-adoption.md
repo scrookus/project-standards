@@ -18,10 +18,10 @@ Last reviewed: 2026-06-21
 
 ## Adopted Baseline
 
-Baseline: standards-v0.5
-Baseline tag: standards-v0.5
+Baseline: standards-v0.5.1
+Baseline tag: standards-v0.5.1
 Adoption branch/ref: main
-Adoption commit: `standards-v0.5` tag target
+Adoption commit: `standards-v0.5.1` tag target
 Adoption checked at: 2026-06-21
 Adopted on: 2026-06-21
 Adoption owner: DOC
@@ -32,9 +32,9 @@ Shared standards source: `standards/`
 
 | Axis | Status | Evidence / Notes |
 |---|---|---|
-| Branch/ref checked | main at the `standards-v0.5` tag target on 2026-06-21 | `project-standards` publishes from `main`; agents must still read the published tag for product adoption. |
-| Adopted version | standards-v0.5 adopted on 2026-06-21 | Local overlays and shared standards updated for the permission-boundary baseline. |
-| Upstream-current | current | `standards-v0.5` is the current baseline once tagged and pushed. |
+| Branch/ref checked | main at the `standards-v0.5.1` tag target on 2026-06-21 | `project-standards` publishes from `main`; agents must still read the published tag for product adoption. |
+| Adopted version | standards-v0.5.1 adopted on 2026-06-21 | Local overlays and shared standards updated for the permission-boundary baseline and adopter hardening clarifications. |
+| Upstream-current | current | `standards-v0.5.1` is the current baseline once tagged and pushed. |
 | Conformance | clean for shared docs; product adoption pending | Product repos must adopt through their own ledgers and queues. |
 
 ## Local Overlays
@@ -73,4 +73,4 @@ Keep this adoption ledger focused on how `project-standards/` adopts the current
 
 Task ID: PSTD-016
 Owner: SEC
-Next action: Coordinate staged `standards-v0.5` product adoption after the tag is published.
+Next action: Coordinate staged `standards-v0.5.1` product adoption after the tag is published.
